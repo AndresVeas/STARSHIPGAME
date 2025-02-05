@@ -1,37 +1,34 @@
 package DataAcces.DTO;
 
-public class ScoreDTO {
+public class LoginDTO {
 
-    private Integer IdScore;
+    private Integer IdLogin;
     private Integer IdJugador;
-    private Integer Puntaje;
     private String  Estado;
     private String  FechaCreacion;
     private String  FechaModifica;
 
-    public ScoreDTO(){}
+    public LoginDTO(){}
 
-    public ScoreDTO(Integer IdJugador, Integer Puntaje) {
-        this.IdJugador = IdJugador;
-        this.Puntaje = Puntaje;
+    public LoginDTO(Integer idJugador) {
+        IdJugador = idJugador;
     }
 
-    public ScoreDTO(Integer idScore, Integer idJugador, Integer puntaje, String estado, String fechaCreacion,
+    public LoginDTO(Integer idLogin, Integer idJugador, String estado, String fechaCreacion,
             String fechaModifica) {
-        IdScore = idScore;
+        IdLogin = idLogin;
         IdJugador = idJugador;
-        Puntaje = puntaje;
         Estado = estado;
         FechaCreacion = fechaCreacion;
         FechaModifica = fechaModifica;
     }
 
-    public Integer getIdScore() {
-        return IdScore;
+    public Integer getIdLogin() {
+        return IdLogin;
     }
 
-    public void setIdScore(Integer idScore) {
-        IdScore = idScore;
+    public void setIdLogin(Integer idLogin) {
+        IdLogin = idLogin;
     }
 
     public Integer getIdJugador() {
@@ -40,14 +37,6 @@ public class ScoreDTO {
 
     public void setIdJugador(Integer idJugador) {
         IdJugador = idJugador;
-    }
-
-    public Integer getPuntaje() {
-        return Puntaje;
-    }
-
-    public void setPuntaje(Integer puntaje) {
-        Puntaje = puntaje;
     }
 
     public String getEstado() {
@@ -76,9 +65,8 @@ public class ScoreDTO {
 
     public String toString(){
         return getClass().getName()
-        + "\n IdScore           : "+ getIdScore             ()    
+        + "\n IdLogin           : "+ getIdLogin             ()    
         + "\n IdJugador         : "+ getIdJugador           ()    
-        + "\n Puntaje           : "+ getPuntaje             ()  
         + "\n Estado            : "+ getEstado              ()  
         + "\n FechaCreacion     : "+ getFechaCreacion       ()
         + "\n FechaModificacion : "+ getFechaModifica       ();

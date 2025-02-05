@@ -85,13 +85,14 @@ public class JugadorDAO extends SQLiteDataHelper implements IDAO <JugadorDTO> {
 
     @Override
     public boolean create(JugadorDTO entity) throws Exception {
-        String query = " INSERT INTO Jugador (Nombre,Apellido,Estado) VALUES (?,?,?)";
+        String query = " INSERT INTO Jugador (Nombre, Apellido, Contrasena, PuntajeMax, Estado) VALUES (?,?,?,?,?)";
         try {
             Connection        conn  = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setString(1, entity.getNombre());
             pstmt.setString(2, entity.getApellido());
-            pstmt.setString(3, entity.getEstado());
+            pstmt.setString(3, entity.getContrasena());
+            pstmt.setInt(4, entity.getPuntajeMax());
             pstmt.executeUpdate();
             return true;
         } 

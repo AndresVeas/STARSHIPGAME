@@ -51,13 +51,13 @@ public class JugadorDTO {
         return Contrasena;
     }
     public void setContrasena(String contrasena) {
-        this.Contrasena = contrasena;
+        Contrasena = contrasena;
     }
     public Integer getPuntajeMax() {
         return PuntajeMax;
     }
-    public void setPuntajeMax(Integer PuntajeMax) {
-        this.PuntajeMax = PuntajeMax;
+    public void setPuntajeMax(Integer puntajeMax) {
+        PuntajeMax = puntajeMax;
     }
     public String getEstado() {
         return Estado;
