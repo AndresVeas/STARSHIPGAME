@@ -1,11 +1,10 @@
 package UserInterface.Form;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class MainForm extends JFrame {
     private int tamanoCuadro = 32;
@@ -16,12 +15,21 @@ public class MainForm extends JFrame {
 
     MenuPanel menuPanel = new MenuPanel();
     JPanel panel = new JPanel();
+    private LoginPanel loginPanel = new LoginPanel();
+    private RegisterPanel registerPanel = new RegisterPanel();
+
 
     public MainForm (){
         customizeComponent();
         menuPanel.btnLogin.addActionListener(e -> setPanel(new LoginPanel()));
         menuPanel.btnSalir.addActionListener(e -> dispose());
+        menuPanel.btnLogin.addActionListener(e -> {
+            setPanel(loginPanel); // Muestra el LoginPanel
+            loginPanel.btnRegistro.addActionListener(ev -> setPanel(new RegisterPanel()));
+            loginPanel.btnSalir.addActionListener(ev -> dispose());
+        });
     }
+
 
     private void customizeComponent (){
         setTitle("STARSHIP GAME");
