@@ -19,6 +19,11 @@ public class ScoreBL {
         Score = sDAO.readBy(idScore);
         return Score;
     }
+
+    public Integer getRecord(int idJugador) throws Exception{
+        return sDAO.getRecord(idJugador);
+    }
+
     public boolean create(ScoreDTO ScoreDTO) throws Exception{   
         return sDAO.create(ScoreDTO);
     }

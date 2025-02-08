@@ -78,13 +78,12 @@ public class ScoreDAO extends SQLiteDataHelper implements IDAO <ScoreDTO> {
 
     @Override
     public boolean create(ScoreDTO entity) throws Exception {
-        String query = " INSERT INTO Score (IdJugador,Puntaje,Estado) VALUES (?,?,?)";
+        String query = " INSERT INTO Score (IdJugador,Puntaje) VALUES (?,?)";
         try {
             Connection        conn  = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setInt(1, entity.getIdJugador());
             pstmt.setInt(2, entity.getPuntaje());
-            pstmt.setString(3, entity.getEstado());
             pstmt.executeUpdate();
             return true;
         } 
@@ -119,20 +118,21 @@ public class ScoreDAO extends SQLiteDataHelper implements IDAO <ScoreDTO> {
             return true;
     }
 
-    
-    public Integer getMaxRow()  throws Exception  {
-        String query =" SELECT COUNT(*) TotalReg FROM Score";
+    public Integer getRecord (int idJugador) throws Exception {
+        Integer maxScore = null;
+        String query = "SELECT MAX(Puntaje) AS PuntajeRecord FROM Score WHERE IdJugador = ?";
         try {
-            Connection conn = openConnection();         // conectar a DB     
-            Statement  stmt = conn.createStatement();   // CRUD : select * ...    
-            ResultSet rs   = stmt.executeQuery(query);  // ejecutar la
-            while (rs.next()) {
-                return rs.getInt(1);                    // TotalReg
+            Connection conn = openConnection();
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, idJugador);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                maxScore = rs.getInt("PuntajeRecord");
             }
-        } 
-        catch (SQLException e) {
-            throw e; 
+        } catch (SQLException e) {
+            throw e;
         }
-        return 0;
+        return maxScore;
     }
+    
 }

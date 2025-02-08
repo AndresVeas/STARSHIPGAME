@@ -113,6 +113,7 @@ public class LoginDAO extends SQLiteDataHelper implements IDAO <LoginDTO> {
             return true;
     }
 
+    
     public Integer getId (String nickname) throws Exception {
         String query = "SELECT IdJugador FROM Jugador WHERE Nickname = ?";
         try {

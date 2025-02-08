@@ -19,23 +19,27 @@ public class Sistema {
     private Image alienYellowImg;
     private ArrayList<Image> alienImgArray;
 
-    public  Nave ship;
+    public Nave ship;
+    public int shipWidth = tileSize*2;
+    public int shipHeight = tileSize;
+    public int shipX = tileSize * columns/2 - tileSize;
+    public int shipY = tileSize * rows - tileSize*2;
+    public int shipVelocityX = tileSize;
     public ArrayList<Alien> alienArray;
     public ArrayList<Bala> bulletArray;
 
-    private int alienWidth = tileSize * 2;
-    private int alienHeight = tileSize;
-    private int alienX = tileSize;
-    private int alienY = tileSize;
+    public int alienRows = 2;
+    public int alienColumns = 3;
+    public int alienCount = 0;
+    public int alienVelocityX = 1;
+    public int alienX = tileSize;
+    public int alienY = tileSize;
+    public int alienWidth = tileSize * 2;
+    public int alienHeight = tileSize;
 
-    private int alienRows = 1;
-    private int alienColumns = 1;
-    private int alienCount = 0;
-    private int alienVelocityX = 1;
-
-    private int bulletWidth = tileSize / 8;
-    private int bulletHeight = tileSize / 2;
-    private int bulletVelocityY = -12;
+    public int balaWidth   = tileSize / 8;
+    public int balaHeight = tileSize / 2;
+    public int bulletVelocityY = -13;
 
     public Jugador jugador = new Jugador();
 
@@ -56,8 +60,7 @@ public class Sistema {
         alienImgArray.add(alienMagentaImg);
         alienImgArray.add(alienYellowImg);
 
-        ship = new Nave(tileSize * columns / 2 - tileSize, tileSize * rows - tileSize * 2, tileSize * 2, tileSize, shipImg);
-        ship.setShipVelocityX(tileSize);
+        ship = new Nave(shipX, shipY, shipWidth, shipHeight, shipImg);
         alienArray = new ArrayList<Alien>();
         bulletArray = new ArrayList<Bala>();
 
@@ -72,8 +75,12 @@ public class Sistema {
 
                 if (alien.x + alien.width >= boardWidth || alien.x <= 0) {
                     alienVelocityX *= -1;
-                    for (int j = 0; j < alienArray.size(); j++) {
-                        alienArray.get(j).y += alienHeight;
+                    if (alienVelocityX < 3 || alienVelocityX > -3) {
+                        alienVelocityX = (alienVelocityX < 0) ? --alienVelocityX : ++alienVelocityX; // Aumentar la velocidad de los alienígenas
+                    }
+                    alien.x += alienVelocityX; // Mover un paso extra después del cambio de dirección
+                    for (Alien otherAlien : alienArray) {
+                        otherAlien.y += alienHeight; // Bajar alienígenas
                     }
                 }
 
@@ -93,22 +100,19 @@ public class Sistema {
                     bullet.used = true;
                     alien.alive = false;
                     alienCount--;
-                    jugador.score += 10;
+                    jugador.score += 5;
                 }
             }
         }
-
 
         while (bulletArray.size() > 0 && (bulletArray.get(0).used || bulletArray.get(0).y < 0)) {
             bulletArray.remove(0); 
         }
 
-        //next level
         if (alienCount == 0) {
-            alienVelocityX++;
-            jugador.score += alienColumns * alienRows * 100; //bonus points :)
-            alienColumns = Math.min(alienColumns + 1, columns / 2 - 2); //cap at 16/2 -2 = 6
-            alienRows = Math.min(alienRows + 1, rows - 6);  //cap at 16-6 = 10
+            jugador.score += 50; //bonus points :)
+            alienColumns = Math.min(alienColumns + 1, columns/2 -2); //cap at 16/2 -2 = 6
+            alienRows = Math.min(alienRows + 1, rows-6);  //cap at 16-6 = 10
             alienArray.clear();
             bulletArray.clear();
             createAliens();
@@ -117,32 +121,22 @@ public class Sistema {
 
     public void createAliens() {
         Random random = new Random();
-        for (int i = 0; i < alienColumns * alienRows; i++) {
-            boolean positionValid;
-            int randomX, randomY;
-            do {
-                positionValid = true;
-                randomX = random.nextInt(boardWidth - alienWidth);
-                randomY = random.nextInt(boardHeight / 2); // Limita la posición Y a la mitad superior del tablero
-
-                // Verifica si la posición está ocupada por otro alienígena
-                for (Alien alien : alienArray) {
-                    if (detectCollision(new Alien(randomX, randomY, alienWidth, alienHeight, null), alien)) {
-                        positionValid = false;
-                        break;
-                    }
+        double probability = 0.35; 
+    
+        for (int c = 0; c < alienColumns; c++) {
+            for (int r = 0; r < alienRows; r++) {
+                if (random.nextDouble() < probability) { 
+                    int randomImgIndex = random.nextInt(alienImgArray.size());
+                    Alien alien = new Alien(
+                        alienX + c * alienWidth,
+                        alienY + r * alienHeight,
+                        alienWidth,
+                        alienHeight,
+                        alienImgArray.get(randomImgIndex)
+                    );
+                    alienArray.add(alien);
                 }
-            } while (!positionValid);
-
-            int randomImgIndex = random.nextInt(alienImgArray.size());
-            Alien alien = new Alien(
-                    randomX,
-                    randomY,
-                    alienWidth,
-                    alienHeight,
-                    alienImgArray.get(randomImgIndex)
-            );
-            alienArray.add(alien);
+            }
         }
         alienCount = alienArray.size();
     }

@@ -19,14 +19,22 @@ import UserInterface.CustomerControl.G6Button;
 import java.awt.*;
 
 public class RankingPanel extends JPanel{
-    private MainForm mainForm;
+    
     public RankingPanel(MainForm mainForm)  {
-        this.mainForm =mainForm;
         customizeComponent();
         try { showTable(); } catch (Exception e) {e.printStackTrace();}
-        btnVolver.addActionListener( e-> mainForm.setPanel(this.mainForm.menuPanel));
+        btnVolver.addActionListener( e-> mainForm.setPanel(mainForm.menuPanel));
     }
 
+    public RankingPanel(MainForm main, StarShipGamePanel pantalla)  {
+        customizeComponent();
+        try { showTable(); } catch (Exception e) {e.printStackTrace();}
+        btnVolver.addActionListener(e -> {
+            main.setPanel(pantalla);
+            pantalla.gameLoop.start();
+            pantalla.requestFocusInWindow();
+        });
+    }
 
     private void showTable() throws Exception {
         List<JugadorDTO> bestFive = JugadorBL.getRanking();
@@ -34,7 +42,7 @@ public class RankingPanel extends JPanel{
         String[] header = {"Nickname","Puntaje","Fecha"};
         Object[][] data = new Object[5][header.length];
         int index = 0;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < bestFive.size(); i++) {
             JugadorDTO u = bestFive.get(i);
             data[index][0] = u.getNickname();
             data[index][1] = u.getPuntaje();

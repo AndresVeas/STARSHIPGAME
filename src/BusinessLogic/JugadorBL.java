@@ -19,6 +19,7 @@ public class JugadorBL {
         Jugador = jDAO.readBy(idJugador);
         return Jugador;
     }
+    
     public boolean create(JugadorDTO JugadorDTO) throws Exception{   
         return jDAO.create(JugadorDTO);
     }

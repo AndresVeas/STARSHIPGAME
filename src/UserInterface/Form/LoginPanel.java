@@ -111,8 +111,9 @@ public class LoginPanel extends JPanel {
                 return;
             } else JOptionPane.showMessageDialog(this, "Usuario y clave correctas "
                                                 + "\nIngresando...", "LOGIN", JOptionPane.INFORMATION_MESSAGE);
-            loginBL.create(new LoginDTO(loginBL.getId(usuario)));
-            mainForm.setPanel(new StarShipGamePanel());
+            int id = loginBL.getId(usuario);
+            loginBL.create(new LoginDTO(id));
+            mainForm.setPanel(new StarShipGamePanel(id,mainForm));
         } catch (Exception e) {
             e.printStackTrace();
         }

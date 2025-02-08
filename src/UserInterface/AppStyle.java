@@ -42,6 +42,23 @@ public class AppStyle {
         }
         FONT_MAIN = font;
     }
+
+    public static final Font  FONT_GAME_OVER;
+    static {
+        Font font = null;
+        try {
+            InputStream is = AppStyle.class.getResourceAsStream("/UserInterface/Resources/PressStart2P-Regular.ttf");
+            if (is != null) {
+                font = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(Font.BOLD, 20);
+            } else {
+                System.err.println("No se pudo encontrar el archivo de la fuente.");
+            }
+        } catch (FontFormatException | IOException e) {
+            e.printStackTrace();
+            font = new Font("Serif", Font.BOLD, 20);
+        }
+        FONT_GAME_OVER = font;
+    }
     public static final Font  FONT_SMALL   = new Font("JetBrains Mono", Font.PLAIN| Font.PLAIN, 12);
 
     public static final int ALIGNMENT_LEFT  = SwingConstants.LEFT;

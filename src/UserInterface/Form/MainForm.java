@@ -15,7 +15,7 @@ public class MainForm extends JFrame {
         customizeComponent();
         menuPanel.btnLogin.addActionListener(e -> setPanel(new LoginPanel(this)));
         menuPanel.btnRanking.addActionListener(e -> setPanel(new RankingPanel (this)));
-        menuPanel.btnSalir.addActionListener(e -> dispose());
+        menuPanel.btnSalir.addActionListener(e -> System.exit(0));
     }
 
 
