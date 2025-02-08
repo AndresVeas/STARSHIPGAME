@@ -6,8 +6,6 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
-
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -68,23 +66,19 @@ public class AppStyle {
     public static final Cursor CURSOR_HAND    = new Cursor(Cursor.HAND_CURSOR);
     public static final Cursor CURSOR_DEFAULT = new Cursor(Cursor.DEFAULT_CURSOR);
 
-    public static final URL URL_MAIN  = AppStyle.class.getResource("/UserInterface/Resource/Img/FondoBiblioteca.jpg");
-    public static final URL URL_LOGO  = AppStyle.class.getResource("/UserInterface/Resource/Img/Logo.png");
-    public static final URL URL_SPLASH= AppStyle.class.getResource("/UserInterface/Resource/Img/Polibiblio.jpg");
-
     public static final CompoundBorder createBorderRect(){
         return BorderFactory.createCompoundBorder(  new LineBorder(new Color(173, 216, 230)),
                                                     new EmptyBorder(0, 0, 0, 0));
     }
 
     public static final void showMsg(String msg){
-        JOptionPane.showMessageDialog(null, msg, "😏 POLIBIBLIO", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, msg, "😏 STARSHIP", JOptionPane.INFORMATION_MESSAGE);
     }
     public static final void showMsgError(String msg){
-        JOptionPane.showMessageDialog(null, msg, "💀 POLIBIBLIO", JOptionPane.OK_OPTION);
+        JOptionPane.showMessageDialog(null, msg, "💀 STARSHIP", JOptionPane.OK_OPTION);
     }
 
     public static final boolean showConfirmYesNo(String msg){
-        return (JOptionPane.showConfirmDialog(null, msg, "😞 POLIBIBLIO", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
+        return (JOptionPane.showConfirmDialog(null, msg, "😞 STARSHIP", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
     }
 }
