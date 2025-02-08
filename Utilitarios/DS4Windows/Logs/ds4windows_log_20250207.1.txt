@@ -1,0 +1,33 @@
+2025-02-07 19:39:09.0050|INFO|DS4Windows version 3.3.3
+2025-02-07 19:39:09.0300|INFO|DS4Windows exe file: DS4Windows.exe
+2025-02-07 19:39:09.0300|INFO|DS4Windows Assembly Architecture: x64
+2025-02-07 19:39:09.0300|INFO|OS Version: Microsoft Windows NT 10.0.26100.0
+2025-02-07 19:39:09.0300|INFO|OS Product Name: Windows 10 Home
+2025-02-07 19:39:09.0300|INFO|OS Release ID: 2009
+2025-02-07 19:39:09.0300|INFO|System Architecture: x64
+2025-02-07 19:39:09.0300|INFO|Logger created
+2025-02-07 19:39:16.0008|INFO|Running as User
+2025-02-07 19:39:16.0008|INFO|HidHide control device found
+2025-02-07 19:39:16.0045|INFO|DS4Windows not found in HidHide whitelist. Adding to list
+2025-02-07 19:39:17.3526|INFO|Starting...
+2025-02-07 19:39:19.3539|INFO|Some applications may block controller inputs. (Windows UAC Conflictions). Please go to https://ryochan7.github.io/ds4windows-site/troubleshooting/kb-mouse-issues/#windows-not-responding-to-ds4ws-kb-m-commands-in-some-situations for more information and workarounds.
+2025-02-07 19:39:19.3539|INFO|Using output KB+M handler: SendInput
+2025-02-07 19:39:19.3539|INFO|Connection to ViGEmBus 1.21.442.0 established
+2025-02-07 19:39:19.3539|INFO|Searching for controllers...
+2025-02-07 19:39:19.3539|INFO|Using Exclusive Mode
+2025-02-07 19:40:16.7263|INFO|Found Controller: A4:53:85:01:55:34 (BT) (DS4 v.2).
+2025-02-07 19:40:16.7732|INFO|Controller 1 is not using a profile. Battery level is 100%
+2025-02-07 19:40:54.2029|INFO|Controller 1 is using Profile "PS5". Battery level is 100%
+2025-02-07 19:40:54.2493|INFO|Plugging in virtual DS4 Controller in output slot #1
+2025-02-07 19:40:54.2493|INFO|Associated input controller #1 (DS4 v.2) to virtual DS4 Controller in output slot #1
+2025-02-07 20:07:45.1870|WARN|A4:53:85:01:55:34 disconnected due to read failure: 0
+2025-02-07 20:07:45.1870|INFO|Gamepad data write connection is lost. Disconnecting the gamepad. LastErrorCode=0
+2025-02-07 20:07:45.1870|INFO|Disassociated virtual DS4 Controller in output slot #1 from input controller #1 (DS4 v.2)
+2025-02-07 20:07:45.1931|INFO|Unplugging virtual DS4 Controller from output slot #1
+2025-02-07 20:07:45.1931|INFO|Controller 1 was removed or lost connection
+2025-02-07 20:07:51.7654|INFO|Request App Shutdown
+2025-02-07 20:07:51.7680|INFO|Stopping Virtual Output Controllers
+2025-02-07 20:07:51.7680|INFO|Closing connection to ViGEmBus
+2025-02-07 20:07:51.7680|INFO|Stopping DS4 Input Controllers
+2025-02-07 20:07:51.7680|INFO|Stopped DS4Windows
+2025-02-07 20:07:51.7680|INFO|Closing connection to output handler SendInput

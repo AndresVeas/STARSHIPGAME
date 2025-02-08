@@ -1,0 +1,32 @@
+2025-02-08 01:31:06.0078|INFO|DS4Windows version 3.3.3
+2025-02-08 01:31:06.0114|INFO|DS4Windows exe file: DS4Windows.exe
+2025-02-08 01:31:06.0114|INFO|DS4Windows Assembly Architecture: x64
+2025-02-08 01:31:06.0114|INFO|OS Version: Microsoft Windows NT 10.0.26100.0
+2025-02-08 01:31:06.0114|INFO|OS Product Name: Windows 10 Home
+2025-02-08 01:31:06.0114|INFO|OS Release ID: 2009
+2025-02-08 01:31:06.0114|INFO|System Architecture: x64
+2025-02-08 01:31:06.0114|INFO|Logger created
+2025-02-08 01:31:08.3104|INFO|Running as User
+2025-02-08 01:31:08.3104|INFO|HidHide control device found
+2025-02-08 01:31:08.3104|INFO|DS4Windows not found in HidHide whitelist. Adding to list
+2025-02-08 01:31:09.6287|INFO|Starting...
+2025-02-08 01:31:11.6301|INFO|Some applications may block controller inputs. (Windows UAC Conflictions). Please go to https://ryochan7.github.io/ds4windows-site/troubleshooting/kb-mouse-issues/#windows-not-responding-to-ds4ws-kb-m-commands-in-some-situations for more information and workarounds.
+2025-02-08 01:31:11.6301|INFO|Using output KB+M handler: SendInput
+2025-02-08 01:31:11.6301|INFO|Connection to ViGEmBus 1.21.442.0 established
+2025-02-08 01:31:11.6301|INFO|Searching for controllers...
+2025-02-08 01:31:11.6301|INFO|Using Exclusive Mode
+2025-02-08 01:31:13.9716|INFO|Found Controller: A4:53:85:01:55:34 (BT) (DS4 v.2).
+2025-02-08 01:31:14.1458|INFO|Plugging in virtual DS4 Controller in output slot #1
+2025-02-08 01:31:14.1458|INFO|Associated input controller #1 (DS4 v.2) to virtual DS4 Controller in output slot #1
+2025-02-08 01:31:14.1689|INFO|Controller 1 is using Profile "PS5". Battery level is 100%
+2025-02-08 01:32:36.5602|INFO|Touchpad Movement is now Off
+2025-02-08 01:33:00.1828|INFO|Stopping Virtual Output Controllers
+2025-02-08 01:33:00.1828|INFO|Closing connection to ViGEmBus
+2025-02-08 01:33:00.1828|WARN|A4:53:85:01:55:34 disconnected due to read failure: 995
+2025-02-08 01:33:00.1828|INFO|Disassociated virtual DS4 Controller in output slot #1 from input controller #1 (DS4 v.2)
+2025-02-08 01:33:00.2225|INFO|Unplugging virtual DS4 Controller from output slot #1
+2025-02-08 01:33:00.2225|INFO|Controller 1 was removed or lost connection
+2025-02-08 01:33:00.2751|INFO|Stopping DS4 Input Controllers
+2025-02-08 01:33:00.2751|INFO|Stopped DS4Windows
+2025-02-08 01:33:00.2751|INFO|Closing connection to output handler SendInput
+2025-02-08 01:33:01.7431|INFO|Request App Shutdown

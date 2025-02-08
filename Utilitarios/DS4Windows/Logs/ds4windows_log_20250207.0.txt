@@ -1,0 +1,11 @@
+2025-02-07 19:36:28.0910|INFO|DS4Windows version 3.3.3
+2025-02-07 19:36:28.0910|INFO|DS4Windows exe file: DS4Windows.exe
+2025-02-07 19:36:28.0910|INFO|DS4Windows Assembly Architecture: x64
+2025-02-07 19:36:28.0910|INFO|OS Version: Microsoft Windows NT 10.0.26100.0
+2025-02-07 19:36:28.0910|INFO|OS Product Name: Windows 10 Home
+2025-02-07 19:36:28.0910|INFO|OS Release ID: 2009
+2025-02-07 19:36:28.0910|INFO|System Architecture: x64
+2025-02-07 19:36:28.0910|INFO|Logger created
+2025-02-07 19:36:31.6104|INFO|Running as User
+2025-02-07 19:36:34.9869|INFO|ViGEmBus is not installed
+2025-02-07 19:37:31.4541|INFO|User Session Ending

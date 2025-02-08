@@ -1,0 +1,81 @@
+2025-02-05 23:19:29.0998|INFO|DS4Windows version 3.3.3
+2025-02-05 23:19:29.1169|INFO|DS4Windows exe file: DS4Windows.exe
+2025-02-05 23:19:29.1169|INFO|DS4Windows Assembly Architecture: x64
+2025-02-05 23:19:29.1169|INFO|OS Version: Microsoft Windows NT 10.0.26100.0
+2025-02-05 23:19:29.1169|INFO|OS Product Name: Windows 10 Home
+2025-02-05 23:19:29.1169|INFO|OS Release ID: 2009
+2025-02-05 23:19:29.1169|INFO|System Architecture: x64
+2025-02-05 23:19:29.1169|INFO|Logger created
+2025-02-05 23:19:31.8225|INFO|Running as User
+2025-02-05 23:19:31.8225|INFO|HidHide control device found
+2025-02-05 23:19:33.0868|INFO|Starting...
+2025-02-05 23:19:35.0878|INFO|Using output KB+M handler: FakerInput 0.1.0.0
+2025-02-05 23:19:35.0878|INFO|Connection to ViGEmBus 1.21.442.0 established
+2025-02-05 23:19:35.0878|INFO|Searching for controllers...
+2025-02-05 23:19:35.0878|INFO|Using Exclusive Mode
+2025-02-05 23:20:18.8471|INFO|Found Controller: 24:A6:FA:FB:54:0F (BT) (DualSense).
+2025-02-05 23:20:19.0187|INFO|Plugging in virtual DS4 Controller in output slot #1
+2025-02-05 23:20:19.0187|INFO|Associated input controller #1 (DualSense) to virtual DS4 Controller in output slot #1
+2025-02-05 23:20:19.0376|INFO|Controller 1 is using Profile "PS5". Battery level is 25%
+2025-02-05 23:23:51.5966|INFO|Stopping Virtual Output Controllers
+2025-02-05 23:23:51.5966|INFO|Closing connection to ViGEmBus
+2025-02-05 23:23:51.5966|WARN|24:A6:FA:FB:54:0F disconnected due to read failure: 995
+2025-02-05 23:23:51.5966|INFO|Disassociated virtual DS4 Controller in output slot #1 from input controller #1 (DualSense)
+2025-02-05 23:23:51.6453|INFO|Unplugging virtual DS4 Controller from output slot #1
+2025-02-05 23:23:51.6453|INFO|Controller 1 was removed or lost connection
+2025-02-05 23:23:51.6992|INFO|Stopping DS4 Input Controllers
+2025-02-05 23:23:51.6992|INFO|Stopped DS4Windows
+2025-02-05 23:23:51.6992|INFO|Closing connection to output handler FakerInput
+2025-02-05 23:24:53.6700|INFO|Starting...
+2025-02-05 23:24:55.6708|INFO|Using output KB+M handler: FakerInput 0.1.0.0
+2025-02-05 23:24:55.6708|INFO|Connection to ViGEmBus 1.21.442.0 established
+2025-02-05 23:24:55.6708|INFO|Searching for controllers...
+2025-02-05 23:24:55.6708|INFO|Using Exclusive Mode
+2025-02-05 23:25:04.0028|INFO|Found Controller: 24:A6:FA:FB:54:0F (BT) (DualSense).
+2025-02-05 23:25:04.1017|INFO|Plugging in virtual DS4 Controller in output slot #1
+2025-02-05 23:25:04.1017|INFO|Associated input controller #1 (DualSense) to virtual DS4 Controller in output slot #1
+2025-02-05 23:25:04.1017|INFO|Controller 1 is using Profile "PS5". Battery level is 25%
+2025-02-05 23:27:34.6465|INFO|Stopping Virtual Output Controllers
+2025-02-05 23:27:34.6465|INFO|Closing connection to ViGEmBus
+2025-02-05 23:27:34.6465|WARN|24:A6:FA:FB:54:0F disconnected due to read failure: 995
+2025-02-05 23:27:34.6465|INFO|Disassociated virtual DS4 Controller in output slot #1 from input controller #1 (DualSense)
+2025-02-05 23:27:34.7204|INFO|Unplugging virtual DS4 Controller from output slot #1
+2025-02-05 23:27:34.7204|INFO|Controller 1 was removed or lost connection
+2025-02-05 23:27:34.7710|INFO|Stopping DS4 Input Controllers
+2025-02-05 23:27:34.7710|INFO|Stopped DS4Windows
+2025-02-05 23:27:34.7710|INFO|Closing connection to output handler FakerInput
+2025-02-05 23:28:03.6377|INFO|Starting...
+2025-02-05 23:28:05.6383|INFO|Using output KB+M handler: FakerInput 0.1.0.0
+2025-02-05 23:28:05.6383|INFO|Connection to ViGEmBus 1.21.442.0 established
+2025-02-05 23:28:05.6383|INFO|Searching for controllers...
+2025-02-05 23:28:05.6383|INFO|Using Exclusive Mode
+2025-02-05 23:28:09.4046|INFO|Found Controller: 24:A6:FA:FB:54:0F (BT) (DualSense).
+2025-02-05 23:28:09.5043|INFO|Plugging in virtual DS4 Controller in output slot #1
+2025-02-05 23:28:09.5043|INFO|Associated input controller #1 (DualSense) to virtual DS4 Controller in output slot #1
+2025-02-05 23:28:09.5043|INFO|Controller 1 is using Profile "PS5". Battery level is 25%
+2025-02-05 23:36:09.0756|INFO|Stopping Virtual Output Controllers
+2025-02-05 23:36:09.0756|INFO|Closing connection to ViGEmBus
+2025-02-05 23:36:09.1269|INFO|Disassociated virtual DS4 Controller in output slot #1 from input controller #1 (DualSense)
+2025-02-05 23:36:09.2185|INFO|Unplugging virtual DS4 Controller from output slot #1
+2025-02-05 23:36:09.2185|INFO|Stopping DS4 Input Controllers
+2025-02-05 23:36:09.2185|INFO|Stopped DS4Windows
+2025-02-05 23:36:09.7195|INFO|Closing connection to output handler FakerInput
+2025-02-05 23:38:26.4826|INFO|Starting...
+2025-02-05 23:38:28.4834|INFO|Using output KB+M handler: FakerInput 0.1.0.0
+2025-02-05 23:38:28.4834|INFO|Connection to ViGEmBus 1.21.442.0 established
+2025-02-05 23:38:28.4834|INFO|Searching for controllers...
+2025-02-05 23:38:28.4834|INFO|Using Exclusive Mode
+2025-02-05 23:38:33.9338|INFO|Found Controller: 24:A6:FA:FB:54:0F (BT) (DualSense).
+2025-02-05 23:38:34.0317|INFO|Plugging in virtual DS4 Controller in output slot #1
+2025-02-05 23:38:34.0317|INFO|Associated input controller #1 (DualSense) to virtual DS4 Controller in output slot #1
+2025-02-05 23:38:34.0330|INFO|Controller 1 is using Profile "PS5". Battery level is 37%
+2025-02-05 23:40:12.4944|INFO|Stopping Virtual Output Controllers
+2025-02-05 23:40:12.4944|INFO|Closing connection to ViGEmBus
+2025-02-05 23:40:12.4944|WARN|24:A6:FA:FB:54:0F disconnected due to read failure: 995
+2025-02-05 23:40:12.4944|INFO|Disassociated virtual DS4 Controller in output slot #1 from input controller #1 (DualSense)
+2025-02-05 23:40:12.5502|INFO|Unplugging virtual DS4 Controller from output slot #1
+2025-02-05 23:40:12.5502|INFO|Controller 1 was removed or lost connection
+2025-02-05 23:40:12.6017|INFO|Stopping DS4 Input Controllers
+2025-02-05 23:40:12.6017|INFO|Stopped DS4Windows
+2025-02-05 23:40:12.6017|INFO|Closing connection to output handler FakerInput
+2025-02-05 23:40:13.9873|INFO|Request App Shutdown
