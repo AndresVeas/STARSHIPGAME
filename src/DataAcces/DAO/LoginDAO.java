@@ -130,4 +130,5 @@ public class LoginDAO extends SQLiteDataHelper implements IDAO <LoginDTO> {
         }
         return 0;
     }
+    
 }

@@ -1,4 +1,4 @@
--- database: ../dataBase/StarshipGame.db
+-- database: ../dataBase/a.db
 
 DROP TABLE IF EXISTS LoginUs;
 DROP TABLE IF EXISTS Score;

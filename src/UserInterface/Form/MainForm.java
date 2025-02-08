@@ -1,11 +1,10 @@
 package UserInterface.Form;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class MainForm extends JFrame {
     private int tamanoCuadro = 32;
@@ -14,14 +13,15 @@ public class MainForm extends JFrame {
     private int altura = tamanoCuadro * filas;
     private int ancho = tamanoCuadro * columnas;
 
-    MenuPanel menuPanel = new MenuPanel();
-    JPanel panel = new JPanel();
-
-    public MainForm (){
+    public MenuPanel menuPanel = new MenuPanel();
+    private JPanel panel = new JPanel();
+    
+    public MainForm() {
         customizeComponent();
-        menuPanel.btnLogin.addActionListener(e -> setPanel(new LoginPanel()));
+        menuPanel.btnLogin.addActionListener(e -> setPanel(new LoginPanel(this)));
         menuPanel.btnSalir.addActionListener(e -> dispose());
     }
+
 
     private void customizeComponent (){
         setTitle("STARSHIP GAME");
@@ -38,12 +38,12 @@ public class MainForm extends JFrame {
         setVisible(true);
     }
     
-    private void setPanel(JPanel formularioPanel) {
+    public void setPanel(JPanel formularioPanel) {
         Container container = getContentPane();
-        container.remove(menuPanel);
+        container.removeAll();
         panel = formularioPanel;
         panel.setBackground(Color.BLACK);
-        container.add(panel);
+        container.add(panel, BorderLayout.CENTER);
         revalidate();
         repaint();
     }
@@ -51,6 +51,7 @@ public class MainForm extends JFrame {
     public int getTamanoCuadro() {
         return tamanoCuadro;
     }
+
     public int getAltura() {
         return altura;
     }

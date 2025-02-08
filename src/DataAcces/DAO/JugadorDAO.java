@@ -133,4 +133,20 @@ public class JugadorDAO extends SQLiteDataHelper implements IDAO <JugadorDTO> {
         }
         return 0;
     }
+
+    public boolean userExists (String usuarioString) throws Exception {
+        String query = "SELECT COUNT(*) FROM Jugador WHERE Nickname = ?";
+        try {
+            Connection conn = openConnection();
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, usuarioString);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            throw e;
+        }
+        return false;
+    }
 }

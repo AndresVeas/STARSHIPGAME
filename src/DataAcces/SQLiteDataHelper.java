@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public abstract class SQLiteDataHelper {
-    private static String DBPathConnection = "jdbc:sqlite:database\\StarshipGame.db"; 
+    private static String DBPathConnection = "jdbc:sqlite:database\\StarshipGame.sqlite"; 
     private static Connection conn = null;
     
     protected SQLiteDataHelper(){}
