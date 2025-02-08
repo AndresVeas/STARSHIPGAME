@@ -28,8 +28,8 @@ public class Sistema {
     public ArrayList<Alien> alienArray;
     public ArrayList<Bala> bulletArray;
 
-    public int alienRows = 2;
-    public int alienColumns = 3;
+    public int alienRows = 1;
+    public int alienColumns = 1;
     public int alienCount = 0;
     public int alienVelocityX = 1;
     public int alienX = tileSize;

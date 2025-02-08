@@ -16,6 +16,9 @@ import UserInterface.CustomerControl.G6Label;
 public class StarShipGamePanel extends JPanel implements ActionListener, KeyListener {
     private Sistema sistema;
     public Timer gameLoop;
+    private Timer moveTimer;
+    private boolean movingLeft = false;
+    private boolean movingRight = false;
     private int idJugador;
     private ScoreBL scoreBL = new ScoreBL();
 
@@ -27,6 +30,14 @@ public class StarShipGamePanel extends JPanel implements ActionListener, KeyList
         btnMenu.addActionListener(e -> mainForm.setPanel(mainForm.menuPanel));
         btnRanking.addActionListener(e -> mainForm.setPanel(new RankingPanel(mainForm, this)));
         btnSalir.addActionListener(e-> System.exit(0));
+
+        moveTimer = new Timer(70, e -> {
+            if (movingLeft && sistema.ship.x - sistema.shipVelocityX >= 0) {
+                sistema.ship.x -= sistema.shipVelocityX;
+            } else if (movingRight && sistema.ship.x + sistema.shipVelocityX + sistema.ship.width <= sistema.getBoardWidth()) {
+                sistema.ship.x += sistema.shipVelocityX;
+            }
+        });
     }
     
     @Override
@@ -147,31 +158,42 @@ public class StarShipGamePanel extends JPanel implements ActionListener, KeyList
             sistema.createAliens();
             gameOverLabel.setVisible(false);
             gameLoop.start();
-        }
-        else if (e.getKeyCode() == KeyEvent.VK_LEFT  && sistema.ship.x - sistema.shipVelocityX >= 0) {
-            sistema.ship.x -= sistema.shipVelocityX; //move left one tile
-        }
-        else if (e.getKeyCode() == KeyEvent.VK_RIGHT  && sistema.ship.x + sistema.shipVelocityX 
-                + sistema.ship.width <= sistema.getBoardWidth()) {
-            sistema.ship.x += sistema.shipVelocityX; //move right one tile
-        } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+        }else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             Bala bullet = new Bala(sistema.ship.x + sistema.ship.width * 15 / 32, sistema.ship.y,
                                  sistema.balaWidth, sistema.balaHeight);
             sistema.bulletArray.add(bullet);
+        }else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            movingLeft = false;
+            if (!movingRight) {
+                moveTimer.stop();
+            }
+        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            movingRight = false;
+            if (!movingLeft) {
+                moveTimer.stop();
+            }
         }
+    
     }
     
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT  && sistema.ship.x - sistema.shipVelocityX >= 0) {
-            sistema.ship.x -= sistema.shipVelocityX; //move left one tile
+            movingLeft = true;
+            if (!moveTimer.isRunning()) {
+                moveTimer.start();
+            }
         }
         else if (e.getKeyCode() == KeyEvent.VK_RIGHT  && sistema.ship.x + sistema.shipVelocityX 
                 + sistema.ship.width <= sistema.getBoardWidth()) {
-            sistema.ship.x += sistema.shipVelocityX; //move right one tile
+            movingRight = true;
+            if (!moveTimer.isRunning()) {
+                moveTimer.start();
+            }
         }
     }
-    
+
+
     @Override
     public void keyTyped(KeyEvent e) {
     }
