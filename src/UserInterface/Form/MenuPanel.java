@@ -20,14 +20,8 @@ import UserInterface.CustomerControl.G6Label;
 
 public class MenuPanel extends JPanel {
     private Image backgroundImage;
-    private MainForm mainForm;
 
     public MenuPanel() {
-        customizeComponent();
-    }
-
-    public MenuPanel (MainForm mainForm){
-        this.mainForm = mainForm;
         customizeComponent();
     }
 
