@@ -7,11 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class MainForm extends JFrame {
-    private int tamanoCuadro = 32;
-    private int filas = 20;
-    private int columnas = 30;
-    private int altura = tamanoCuadro * filas;
-    private int ancho = tamanoCuadro * columnas;
 
     public MenuPanel menuPanel = new MenuPanel();
     private JPanel panel = new JPanel();
@@ -19,13 +14,15 @@ public class MainForm extends JFrame {
     public MainForm() {
         customizeComponent();
         menuPanel.btnLogin.addActionListener(e -> setPanel(new LoginPanel(this)));
+        //menuPanel.btnLogin.addActionListener(e -> setPanel(new StarShipGamePanel()));
+        menuPanel.btnRanking.addActionListener(e -> setPanel(new RankingPanel (this)));
         menuPanel.btnSalir.addActionListener(e -> dispose());
     }
 
 
     private void customizeComponent (){
         setTitle("STARSHIP GAME");
-        setSize(ancho, altura);
+        setSize(960, 620);
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,11 +45,4 @@ public class MainForm extends JFrame {
         repaint();
     }
 
-    public int getTamanoCuadro() {
-        return tamanoCuadro;
-    }
-
-    public int getAltura() {
-        return altura;
-    }
 }

@@ -1,27 +1,33 @@
 package UserInterface.Form;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.net.URL;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import BusinessLogic.JugadorBL;
+import BusinessLogic.LoginBL;
+import DataAcces.DTO.JugadorDTO;
 import UserInterface.CustomerControl.G6Button;
 import UserInterface.CustomerControl.G6Label;
 import UserInterface.CustomerControl.G6TextBox;
 
 import java.awt.*;
 
-public class RegisterPanel extends JPanel implements ActionListener{
-    private Image backgroundImage;
+public class RegisterPanel extends JPanel{
+    private MainForm mainForm;
+    private LoginBL loginBL = new LoginBL();
+    private JugadorBL jugadorBL = new JugadorBL();
 
-    public RegisterPanel() {
+    public RegisterPanel(MainForm mainForm) {
+        this.mainForm = mainForm;
         customizeComponent();
+        btnRegistrar.addActionListener(e -> btnRegistrar());
+        btnVolver.addActionListener( e-> mainForm.setPanel(new LoginPanel(mainForm)));
     }
-    @Override
-    public void actionPerformed(ActionEvent e) {}
-    
+
     private void customizeComponent() {
         URL imageUrl = getClass().getResource("/UserInterface/Resources/FondoEstrellas.jpg");
         backgroundImage = new ImageIcon(imageUrl).getImage();
@@ -88,18 +94,39 @@ public class RegisterPanel extends JPanel implements ActionListener{
         }
     }
    
+    private void btnRegistrar (){
+        String usuario  = txtUsuario.getText().trim();
+        String clave    = txtPassword.getText().trim();
+        if (usuario.isEmpty() || clave.isEmpty() ) {
+            JOptionPane.showMessageDialog(this, "Debe llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            if (loginBL.search(usuario)){
+                JOptionPane.showMessageDialog(this, "El usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            jugadorBL.create(new JugadorDTO(usuario,clave));
+            mainForm.setPanel(new LoginPanel(mainForm));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     private G6Button
-    btnRegistrar = new G6Button("Registrar", 30);
-    G6Button btnVolver = new G6Button("Volver", 30);
+            btnRegistrar = new G6Button("Registrar", 30),
+            btnVolver = new G6Button("Volver", 30);
     private G6TextBox 
-    txtUsuario = new G6TextBox(),
-    txtPassword = new G6TextBox();
+            txtUsuario = new G6TextBox(),
+            txtPassword = new G6TextBox();
     private G6Label 
-    lblRegistrar = new G6Label("Registrar Usuario", 50),
-    lblUsuario = new G6Label("Usuario: "),
-    lblPassword = new G6Label("Contraseña: ");
+            lblRegistrar = new G6Label("Registrar Usuario", 50),
+            lblUsuario = new G6Label("Usuario: "),
+            lblPassword = new G6Label("Contraseña: ");
     private JPanel 
-    pnlCredenciales = new JPanel(new FlowLayout()),
-    pnlBtns = new JPanel(new FlowLayout());
+            pnlCredenciales = new JPanel(new FlowLayout()),
+            pnlBtns = new JPanel(new FlowLayout());
+    private Image 
+            backgroundImage;
 }
 

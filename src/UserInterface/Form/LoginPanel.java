@@ -4,31 +4,26 @@ import UserInterface.CustomerControl.G6Button;
 import UserInterface.CustomerControl.G6Label;
 import UserInterface.CustomerControl.G6TextBox;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import DataAcces.DTO.JugadorDTO;
-import BusinessLogic.JugadorBL;
+import BusinessLogic.LoginBL;
+import DataAcces.DTO.LoginDTO;
 
-public class LoginPanel extends JPanel implements ActionListener {
+public class LoginPanel extends JPanel {
     private MainForm mainForm;
-    private JugadorDTO jugador = null;
-    private JugadorBL jugadorBL = null;
+    private LoginBL loginBL = new LoginBL();
+
     public LoginPanel(MainForm mainForm) {
         this.mainForm = mainForm;
         customizeComponent();
         
-        btnIngresar.addActionListener(e -> btnIngresar());
-        btnRegistro.addActionListener(e -> mainForm.setPanel(new RegisterPanel()));
-        btnVolver.addActionListener(e -> mainForm.setPanel(mainForm.menuPanel) );
+        btnIngresar.addActionListener   (e -> btnIngresar());
+        btnRegistro.addActionListener   (e -> mainForm.setPanel(new RegisterPanel(mainForm)));
+        btnVolver.addActionListener     (e -> mainForm.setPanel(mainForm.menuPanel) );
     }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {}
 
     private void customizeComponent() {
         URL imageUrl = getClass().getResource("/UserInterface/Resources/FondoEstrellas.jpg");
@@ -100,14 +95,25 @@ public class LoginPanel extends JPanel implements ActionListener {
     }
 
     private void btnIngresar() {
-        String usuario = txtUsuario.getText();
-        String clave   = txtPassword.getText();
+        String usuario  = txtUsuario.getText().trim();
+        String clave    = txtPassword.getText().trim();
+        if (usuario.isEmpty() || clave.isEmpty() ) {
+            JOptionPane.showMessageDialog(this, "Debe llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         try {
-            if (jugadorBL.search(usuario)){
-                JOptionPane.showMessageDialog(this, "El usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+            if (!loginBL.search(usuario)){
+                JOptionPane.showMessageDialog(this, "El usuario NO existe", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
             }
+            if (!loginBL.verifyPassword(usuario, clave)){
+                JOptionPane.showMessageDialog(this, "Clave Incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            } else JOptionPane.showMessageDialog(this, "Usuario y clave correctas "
+                                                + "\nIngresando...", "LOGIN", JOptionPane.INFORMATION_MESSAGE);
+            loginBL.create(new LoginDTO(loginBL.getId(usuario)));
+            mainForm.setPanel(new StarShipGamePanel());
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

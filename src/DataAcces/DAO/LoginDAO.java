@@ -75,12 +75,11 @@ public class LoginDAO extends SQLiteDataHelper implements IDAO <LoginDTO> {
 
     @Override
     public boolean create(LoginDTO entity) throws Exception {
-        String query = " INSERT INTO LoginUs (IdJugador,Estado) VALUES (?,?)";
+        String query = " INSERT INTO LoginUs (IdJugador) VALUES (?)";
         try {
             Connection        conn  = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setInt(1, entity.getIdJugador());
-            pstmt.setString(2, entity.getEstado());
             pstmt.executeUpdate();
             return true;
         } 
@@ -114,21 +113,54 @@ public class LoginDAO extends SQLiteDataHelper implements IDAO <LoginDTO> {
             return true;
     }
 
-    
-    public Integer getMaxRow()  throws Exception  {
-        String query =" SELECT COUNT(*) TotalReg FROM LoginUs";
+    public Integer getId (String nickname) throws Exception {
+        String query = "SELECT IdJugador FROM Jugador WHERE Nickname = ?";
         try {
-            Connection conn = openConnection();         // conectar a DB     
-            Statement  stmt = conn.createStatement();   // CRUD : select * ...    
-            ResultSet rs   = stmt.executeQuery(query);  // ejecutar la
-            while (rs.next()) {
-                return rs.getInt(1);                    // TotalReg
+            Connection conn = openConnection();
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, nickname);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("IdJugador");
+            } else {
+                return null; // or throw an exception if preferred
             }
-        } 
-        catch (SQLException e) {
-            throw e; 
+        } catch (SQLException e) {
+            throw e;
         }
-        return 0;
+    }
+
+    public boolean userExists (String Nickname) throws Exception {
+        String query = "SELECT COUNT(*) FROM Jugador WHERE Nickname = ?";
+        try {
+            Connection conn = openConnection();
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, Nickname);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            throw e;
+        }
+        return false;
+    }
+
+    public boolean verifyPassword (String Nickname, String clave) throws Exception {
+        String query = "SELECT Clave FROM Jugador WHERE Nickname = ?";
+        try {
+            Connection conn = openConnection();
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, Nickname);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return clave.equals(rs.getString("Clave"));
+            }
+        } catch (SQLException e) {
+            throw e;
+        }
+        return false;
     }
     
 }

@@ -20,8 +20,14 @@ import UserInterface.CustomerControl.G6Label;
 
 public class MenuPanel extends JPanel {
     private Image backgroundImage;
+    private MainForm mainForm;
 
     public MenuPanel() {
+        customizeComponent();
+    }
+
+    public MenuPanel (MainForm mainForm){
+        this.mainForm = mainForm;
         customizeComponent();
     }
 
@@ -65,18 +71,21 @@ public class MenuPanel extends JPanel {
         gbc.gridy = 2;
         gbc.insets = new Insets(5, 0, 5, 0);
         add(btnLogin, gbc);
-        gbc.gridy = 3;
+        gbc.gridy = 4;
+        add(btnRanking, gbc);
+        gbc.gridy = 5;
         add(btnSalir, gbc);
 
-        gbc.gridy = 5;
+        gbc.gridy = 6;
         gbc.insets = new Insets(10, 10, 10, 10);
         add(lblCopyRight, gbc);
         
     }
     
     public G6Button 
-            btnLogin = new G6Button("Iniciar Sesión"),
-            btnSalir = new G6Button("Salir");
+            btnLogin    = new G6Button("Iniciar Sesión"),
+            btnRanking  = new G6Button("Ranking"),
+            btnSalir    = new G6Button("Salir");
     private G6Label
             lblCopyRight    = new G6Label("\u00A9 2025 Grupo 6 GR2SW",15);
     

@@ -7,6 +7,7 @@ public class JugadorDTO {
     private String  Estado;
     private String  FechaCreacion;
     private String  FechaModifica;
+    private Integer Puntaje;
 
     public JugadorDTO() {}
 
@@ -71,7 +72,16 @@ public class JugadorDTO {
 
     public void setFechaModifica(String fechaModifica) {
         FechaModifica = fechaModifica;
-    }   
+    }  
+    
+    public Integer getPuntaje() {
+        return Puntaje;
+    }
+
+    public void setPuntaje(Integer puntaje) {
+        Puntaje = puntaje;
+    }
+
 
     public String toString(){
         return getClass().getName()

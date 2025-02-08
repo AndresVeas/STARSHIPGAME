@@ -26,14 +26,10 @@ public class JugadorBL {
         return jDAO.update(JugadorDTO);
     }
 
-    public boolean search (String Nickname) throws Exception{
-        return jDAO.userExists(Nickname);
+    public static List <JugadorDTO> getRanking() throws Exception{
+        return jDAO.getRanking ();
     }
-
     public boolean delete(int idJugador) throws Exception{
         return jDAO.delete(idJugador);
-    }
-    public Integer getMaxRow() throws Exception{
-        return jDAO.getMaxRow();
     }
 }

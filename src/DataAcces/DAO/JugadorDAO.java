@@ -116,37 +116,51 @@ public class JugadorDAO extends SQLiteDataHelper implements IDAO <JugadorDTO> {
     public boolean delete(Integer id) throws Exception {
             return true;
     }
-
     
-    public Integer getMaxRow()  throws Exception  {
-        String query =" SELECT COUNT(*) TotalReg FROM Jugador";
-        try {
-            Connection conn = openConnection();         // conectar a DB     
-            Statement  stmt = conn.createStatement();   // CRUD : select * ...    
-            ResultSet rs   = stmt.executeQuery(query);  // ejecutar la
-            while (rs.next()) {
-                return rs.getInt(1);                    // TotalReg
-            }
-        } 
-        catch (SQLException e) {
-            throw e; 
-        }
-        return 0;
-    }
-
-    public boolean userExists (String usuarioString) throws Exception {
-        String query = "SELECT COUNT(*) FROM Jugador WHERE Nickname = ?";
+    public Integer getId (String nickname) throws Exception {
+        String query = "SELECT IdJugador FROM Jugador WHERE Nickname = ?";
         try {
             Connection conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
-            pstmt.setString(1, usuarioString);
+            pstmt.setString(1, nickname);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                return rs.getInt(1) > 0;
+                return rs.getInt("IdJugador");
+            } else {
+                return null; // or throw an exception if preferred
             }
         } catch (SQLException e) {
             throw e;
         }
-        return false;
+    }
+
+    public List<JugadorDTO> getRanking() throws Exception {
+        List<JugadorDTO> lst = new ArrayList<>();
+        String query = "SELECT j.nickname AS 'Nickname Jugador', " +
+                       "       s.puntaje AS 'Mejor Puntaje', " +
+                       "       j.estado AS 'Estado Jugador', " +
+                       "       s.FechaCreacion AS 'Fecha' " +
+                       "FROM Jugador j " +
+                       "JOIN Score s ON j.idJugador = s.idJugador " +
+                       "WHERE j.estado = 'A' " +
+                       "ORDER BY s.puntaje DESC " +
+                       "LIMIT 5";
+        try {
+            Connection conn = openConnection();         // conectar a DB     
+            Statement stmt = conn.createStatement();   // CRUD : select * ...    
+            ResultSet rs = stmt.executeQuery(query);  // ejecutar la consulta
+            while (rs.next()) {
+                JugadorDTO dto = new JugadorDTO();
+                dto.setNickname(rs.getString("Nickname Jugador"));
+                dto.setPuntaje(rs.getInt("Mejor Puntaje"));
+                dto.setEstado(rs.getString("Estado Jugador"));
+                dto.setFechaCreacion(rs.getString("Fecha"));
+                lst.add(dto);
+            }
+        } 
+        catch (SQLException e) {
+            throw e;
+        }
+        return lst;
     }
 }

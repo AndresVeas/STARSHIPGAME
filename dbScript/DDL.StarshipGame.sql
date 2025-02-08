@@ -1,4 +1,4 @@
--- database: ../dataBase/a.db
+-- database: ../database/StarshipGame.db
 
 DROP TABLE IF EXISTS LoginUs;
 DROP TABLE IF EXISTS Score;
@@ -9,7 +9,7 @@ CREATE TABLE Jugador (
      IdJugador        INTEGER PRIMARY KEY AUTOINCREMENT
     ,Nickname         VARCHAR(15) NOT NULL
     ,Clave            VARCHAR(15) NOT NULL
-    ,Estado           VARCHAR(1) DEFAULT 'A'
+    ,Estado           VARCHAR(1) NOT NULL DEFAULT 'A'
     ,FechaCreacion    DATETIME NOT NULL DEFAULT (DATETIME('now', 'localtime'))
     ,FechaModifica    DATETIME 
 );
@@ -18,7 +18,7 @@ CREATE TABLE Score (
      IdScore         INTEGER PRIMARY KEY AUTOINCREMENT
     ,IdJugador       INTEGER NOT NULL REFERENCES Jugador (idJugador)
     ,Puntaje         INTEGER DEFAULT 0
-    ,Estado          VARCHAR(1) DEFAULT 'A'
+    ,Estado          VARCHAR(1) NOT NULL DEFAULT 'A'
     ,FechaCreacion   DATETIME NOT NULL DEFAULT (DATETIME('now', 'localtime'))
     ,FechaModifica   DATETIME 
 );
@@ -29,5 +29,5 @@ CREATE TABLE LoginUs (
     ,IdJugador       INTEGER NOT NULL   REFERENCES Jugador (idJugador)
     ,FechaCreacion   DATETIME NOT NULL DEFAULT (DATETIME('now', 'localtime'))
     ,FechaModifica   DATETIME 
-    ,Estado          VARCHAR(1) DEFAULT 'A'
+    ,Estado          VARCHAR(1) NOT NULL DEFAULT 'A'
 );

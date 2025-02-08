@@ -1,4 +1,4 @@
--- database: ../dataBase/StarshipGame.sqlite
+-- database: ../database/StarshipGame.db
 
 INSERT INTO Jugador (nickname, clave)
 VALUES
