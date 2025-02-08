@@ -18,13 +18,11 @@ public class JugadorDAO extends SQLiteDataHelper implements IDAO <JugadorDTO> {
     public JugadorDTO readBy(Integer id) throws Exception {
         JugadorDTO dto = new JugadorDTO();
         String query =" SELECT IdJugador     " 
-                     +"       ,Nombre               " 
-                     +"       ,Apellido             " 
-                     +"       ,Contrasena           "
-                     +"       ,PuntajeMax           "
-                     +"       ,Estado               " 
-                     +"       ,FechaCreacion        " 
-                     +"       ,FechaModifica        " 
+                     +"       ,Nickname      " 
+                     +"       ,Clave         "
+                     +"       ,Estado        " 
+                     +"       ,FechaCreacion " 
+                     +"       ,FechaModifica " 
                      +" FROM  Jugador        "
                      +" WHERE IdJugador =    " + id.toString() ;
         try {
@@ -33,13 +31,11 @@ public class JugadorDAO extends SQLiteDataHelper implements IDAO <JugadorDTO> {
             ResultSet rs   = stmt.executeQuery(query);  // ejecutar la
             while (rs.next()) {
                 dto = new JugadorDTO( rs.getInt(1)           // IdJugador
-                                    ,rs.getString(2)        // Nombre            
-                                    ,rs.getString(3)        // Apellido
-                                    ,rs.getString(4)        // Contraseña      
-                                    ,rs.getInt(5)           // PuntajeMax
-                                    ,rs.getString(6)        // Estado
-                                    ,rs.getString(7)        // FechaCrea
-                                    ,rs.getString(8));      // FechaMod
+                                    ,rs.getString(2)        // Nickname
+                                    ,rs.getString(3)        // Clave      
+                                    ,rs.getString(4)        // Estado
+                                    ,rs.getString(5)        // FechaCrea
+                                    ,rs.getString(6));      // FechaModifica
             }
         } 
         catch (SQLException e) {
@@ -53,27 +49,23 @@ public class JugadorDAO extends SQLiteDataHelper implements IDAO <JugadorDTO> {
         JugadorDTO dto;
         List<JugadorDTO> lst = new ArrayList<>();
         String query =" SELECT IdJugador     " 
-                     +"       ,Nombre               " 
-                     +"       ,Apellido             " 
-                     +"       ,Contrasena           "
-                     +"       ,PuntajeMax           "
-                     +"       ,Estado               " 
-                     +"       ,FechaCreacion        " 
-                     +"       ,FechaModifica        " 
+                     +"       ,Nickname      " 
+                     +"       ,Clave         "
+                     +"       ,Estado        " 
+                     +"       ,FechaCreacion " 
+                     +"       ,FechaModifica " 
                      +" FROM  Jugador        ";
         try {
             Connection conn = openConnection();         // conectar a DB     
             Statement  stmt = conn.createStatement();   // CRUD : select * ...    
             ResultSet rs   = stmt.executeQuery(query);  // ejecutar la
             while (rs.next()) {
-                dto = new JugadorDTO( rs.getInt(1)          // IdJugador
-                                    ,rs.getString(2)        // Nombre            
-                                    ,rs.getString(3)        // Apellido
-                                    ,rs.getString(4)        // Contraseña
-                                    ,rs.getInt(5)           // PuntajeMAx  
-                                    ,rs.getString(6)        // Estado
-                                    ,rs.getString(7)        // FechaCrea
-                                    ,rs.getString(8));      // FechaMod
+                dto = new JugadorDTO( rs.getInt(1)           // IdJugador
+                                    ,rs.getString(2)        // Nickname
+                                    ,rs.getString(3)        // Clave      
+                                    ,rs.getString(4)        // Estado
+                                    ,rs.getString(5)        // FechaCrea
+                                    ,rs.getString(6));      // FechaModifica   // FechaMod
                 lst.add(dto);
             }
         } 
@@ -85,14 +77,12 @@ public class JugadorDAO extends SQLiteDataHelper implements IDAO <JugadorDTO> {
 
     @Override
     public boolean create(JugadorDTO entity) throws Exception {
-        String query = " INSERT INTO Jugador (Nombre, Apellido, Contrasena, PuntajeMax, Estado) VALUES (?,?,?,?,?)";
+        String query = " INSERT INTO Jugador (Nickname, Clave) VALUES (?,?)";
         try {
             Connection        conn  = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
-            pstmt.setString(1, entity.getNombre());
-            pstmt.setString(2, entity.getApellido());
-            pstmt.setString(3, entity.getContrasena());
-            pstmt.setInt(4, entity.getPuntajeMax());
+            pstmt.setString(1, entity.getNickname());
+            pstmt.setString(2, entity.getClave());
             pstmt.executeUpdate();
             return true;
         } 
@@ -105,12 +95,12 @@ public class JugadorDAO extends SQLiteDataHelper implements IDAO <JugadorDTO> {
     public boolean update(JugadorDTO entity) throws Exception {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
         LocalDateTime now = LocalDateTime.now();
-        String query = " UPDATE Jugador SET Nombre = ?,Apellido = ?, FechaModifica = ? , Estado = ? WHERE IdJugador = ?";
+        String query = " UPDATE Jugador SET Nickname = ?,Clave = ?, FechaModifica = ? , Estado = ? WHERE IdJugador = ?";
         try {
             Connection          conn = openConnection();
             PreparedStatement pstmt  = conn.prepareStatement(query);
-            pstmt.setString(1, entity.getNombre());
-            pstmt.setString(2, entity.getApellido());
+            pstmt.setString(1, entity.getNickname());
+            pstmt.setString(2, entity.getClave());
             pstmt.setString(3, dtf.format(now).toString());
             pstmt.setString(4, entity.getEstado());
             pstmt.setInt(5, entity.getIdJugador());

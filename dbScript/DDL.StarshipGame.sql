@@ -6,31 +6,28 @@ DROP TABLE IF EXISTS Jugador;
 
 
 CREATE TABLE Jugador (
-     idJugador        INTEGER PRIMARY KEY AUTOINCREMENT
-    ,nombre           VARCHAR(15) NOT NULL
-    ,apellido         VARCHAR(15) NOT NULL
-    ,contrasena       VARCHAR(15) NOT NULL
-    ,puntajeMax       INTEGER DEFAULT 0
-    ,estado           VARCHAR(1) DEFAULT 'A'
+     IdJugador        INTEGER PRIMARY KEY AUTOINCREMENT
+    ,Nickname         VARCHAR(15) NOT NULL
+    ,Clave            VARCHAR(15) NOT NULL
+    ,Estado           VARCHAR(1) DEFAULT 'A'
     ,FechaCreacion    DATETIME NOT NULL DEFAULT (DATETIME('now', 'localtime'))
-    ,FechaModifica    DATETIME DEFAULT (DATETIME('now', 'localtime'))
+    ,FechaModifica    DATETIME 
 );
 
-
 CREATE TABLE Score (
-     idScore         INTEGER PRIMARY KEY AUTOINCREMENT
-    ,idJugador       INTEGER NOT NULL REFERENCES Jugador (idJugador)
-    ,puntaje         INTEGER DEFAULT 0
-    ,estado          VARCHAR(1) DEFAULT 'A'
+     IdScore         INTEGER PRIMARY KEY AUTOINCREMENT
+    ,IdJugador       INTEGER NOT NULL REFERENCES Jugador (idJugador)
+    ,Puntaje         INTEGER DEFAULT 0
+    ,Estado          VARCHAR(1) DEFAULT 'A'
     ,FechaCreacion   DATETIME NOT NULL DEFAULT (DATETIME('now', 'localtime'))
-    ,FechaModifica   DATETIME DEFAULT (DATETIME('now', 'localtime'))
+    ,FechaModifica   DATETIME 
 );
 
 
 CREATE TABLE LoginUs (
-     idLogin         INTEGER PRIMARY KEY AUTOINCREMENT
-    ,idJugador       INTEGER NOT NULL   REFERENCES Jugador (idJugador)
-    ,estado          VARCHAR(1) DEFAULT 'A'
+     IdLogin         INTEGER PRIMARY KEY AUTOINCREMENT
+    ,IdJugador       INTEGER NOT NULL   REFERENCES Jugador (idJugador)
     ,FechaCreacion   DATETIME NOT NULL DEFAULT (DATETIME('now', 'localtime'))
-    ,FechaModifica   DATETIME DEFAULT (DATETIME('now', 'localtime'))
+    ,FechaModifica   DATETIME 
+    ,Estado          VARCHAR(1) DEFAULT 'A'
 );

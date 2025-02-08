@@ -1,6 +1,4 @@
 
-import javax.swing.*;
-
 import UserInterface.Form.MainForm;
 
 public class App {
