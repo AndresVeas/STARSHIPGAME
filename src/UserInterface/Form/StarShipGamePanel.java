@@ -163,6 +163,13 @@ public class StarShipGamePanel extends JPanel implements ActionListener, KeyList
     
     @Override
     public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_LEFT  && sistema.ship.x - sistema.shipVelocityX >= 0) {
+            sistema.ship.x -= sistema.shipVelocityX; //move left one tile
+        }
+        else if (e.getKeyCode() == KeyEvent.VK_RIGHT  && sistema.ship.x + sistema.shipVelocityX 
+                + sistema.ship.width <= sistema.getBoardWidth()) {
+            sistema.ship.x += sistema.shipVelocityX; //move right one tile
+        }
     }
     
     @Override
