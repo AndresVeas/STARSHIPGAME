@@ -14,7 +14,6 @@ public class MainForm extends JFrame {
     public MainForm() {
         customizeComponent();
         menuPanel.btnLogin.addActionListener(e -> setPanel(new LoginPanel(this)));
-        //menuPanel.btnLogin.addActionListener(e -> setPanel(new StarShipGamePanel()));
         menuPanel.btnRanking.addActionListener(e -> setPanel(new RankingPanel (this)));
         menuPanel.btnSalir.addActionListener(e -> dispose());
     }

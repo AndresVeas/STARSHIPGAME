@@ -7,40 +7,43 @@ import javax.swing.ImageIcon;
 
 public class Sistema {
 
-    public int tileSize = 32;
-    public int rows = 18;
-    public int columns = 19;
-    public int boardWidth = tileSize * columns;
-    public int boardHeight = tileSize * rows;
+    private int tileSize = 32;
+    private int rows = 18;
+    private int columns = 19;
+    private int boardWidth = tileSize * columns;
+    private int boardHeight = tileSize * rows;
+    private Image shipImg;
+    private Image alienImg;
+    private Image alienCyanImg;
+    private Image alienMagentaImg;
+    private Image alienYellowImg;
+    private ArrayList<Image> alienImgArray;
 
-    public Image shipImg;
-    public Image alienImg;
-    public Image alienCyanImg;
-    public Image alienMagentaImg;
-    public Image alienYellowImg;
-    public ArrayList<Image> alienImgArray;
-
-    public Nave ship;
+    public  Nave ship;
     public ArrayList<Alien> alienArray;
     public ArrayList<Bala> bulletArray;
 
-    public int alienWidth = tileSize * 2;
-    public int alienHeight = tileSize;
-    public int alienX = tileSize;
-    public int alienY = tileSize;
+    private int alienWidth = tileSize * 2;
+    private int alienHeight = tileSize;
+    private int alienX = tileSize;
+    private int alienY = tileSize;
 
-    public int alienRows = 2;
-    public int alienColumns = 3;
-    public int alienCount = 0;
-    public int alienVelocityX = 3;
+    private int alienRows = 1;
+    private int alienColumns = 1;
+    private int alienCount = 0;
+    private int alienVelocityX = 1;
 
-    public int bulletWidth = tileSize / 8;
-    public int bulletHeight = tileSize / 2;
-    public int bulletVelocityY = -12;
+    private int bulletWidth = tileSize / 8;
+    private int bulletHeight = tileSize / 2;
+    private int bulletVelocityY = -12;
 
     public Jugador jugador = new Jugador();
 
     public Sistema() {
+        customizeComponent();
+    }
+
+    public void customizeComponent(){
         shipImg = new ImageIcon("src\\UserInterface\\Resources\\ship.png").getImage();
         alienImg = new ImageIcon("src\\UserInterface\\Resources\\alien.png").getImage();
         alienCyanImg = new ImageIcon("src\\UserInterface\\Resources\\alien-cyan.png").getImage();
@@ -54,6 +57,7 @@ public class Sistema {
         alienImgArray.add(alienYellowImg);
 
         ship = new Nave(tileSize * columns / 2 - tileSize, tileSize * rows - tileSize * 2, tileSize * 2, tileSize, shipImg);
+        ship.setShipVelocityX(tileSize);
         alienArray = new ArrayList<Alien>();
         bulletArray = new ArrayList<Bala>();
 
@@ -66,12 +70,8 @@ public class Sistema {
             if (alien.alive) {
                 alien.x += alienVelocityX;
 
-                //if alien touches the borders
                 if (alien.x + alien.width >= boardWidth || alien.x <= 0) {
                     alienVelocityX *= -1;
-                    alien.x += alienVelocityX * 2;
-
-                    //move all aliens up by one row
                     for (int j = 0; j < alienArray.size(); j++) {
                         alienArray.get(j).y += alienHeight;
                     }
@@ -83,31 +83,29 @@ public class Sistema {
             }
         }
 
-        //bullets
         for (int i = 0; i < bulletArray.size(); i++) {
             Bala bullet = bulletArray.get(i);
             bullet.y += bulletVelocityY;
 
-            //bullet collision with aliens
             for (int j = 0; j < alienArray.size(); j++) {
                 Alien alien = alienArray.get(j);
                 if (!bullet.used && alien.alive && detectCollision(bullet, alien)) {
                     bullet.used = true;
                     alien.alive = false;
                     alienCount--;
-                    jugador.score += 100;
+                    jugador.score += 10;
                 }
             }
         }
 
-        //clear bullets
+
         while (bulletArray.size() > 0 && (bulletArray.get(0).used || bulletArray.get(0).y < 0)) {
-            bulletArray.remove(0); //removes the first element of the array
+            bulletArray.remove(0); 
         }
 
         //next level
         if (alienCount == 0) {
-            //increase the number of aliens in columns and rows by 1
+            alienVelocityX++;
             jugador.score += alienColumns * alienRows * 100; //bonus points :)
             alienColumns = Math.min(alienColumns + 1, columns / 2 - 2); //cap at 16/2 -2 = 6
             alienRows = Math.min(alienRows + 1, rows - 6);  //cap at 16-6 = 10
@@ -150,9 +148,51 @@ public class Sistema {
     }
 
     public boolean detectCollision(Block a, Block b) {
-        return a.x < b.x + b.width &&  //a's top left corner doesn't reach b's top right corner
-                a.x + a.width > b.x &&  //a's top right corner passes b's top left corner
-                a.y < b.y + b.height && //a's top left corner doesn't reach b's bottom left corner
-                a.y + a.height > b.y;   //a's bottom left corner passes b's top left corner
+        return a.x < b.x + b.width &&   
+                a.x + a.width > b.x &&  
+                a.y < b.y + b.height && 
+                a.y + a.height > b.y;   
     }
+
+    public int getTileSize() {
+        return tileSize;
+    }
+
+    public void setTileSize(int tileSize) {
+        this.tileSize = tileSize;
+    }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public void setRows(int rows) {
+        this.rows = rows;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
+
+    public void setColumns(int columns) {
+        this.columns = columns;
+    }
+
+    public int getBoardWidth() {
+        return boardWidth;
+    }
+
+    public void setBoardWidth(int boardWidth) {
+        this.boardWidth = boardWidth;
+    }
+
+    public int getBoardHeight() {
+        return boardHeight;
+    }
+
+    public void setBoardHeight(int boardHeight) {
+        this.boardHeight = boardHeight;
+    }
+
+
 }
