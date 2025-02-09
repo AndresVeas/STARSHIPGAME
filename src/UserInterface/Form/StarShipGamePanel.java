@@ -181,7 +181,7 @@ public class StarShipGamePanel extends JPanel implements ActionListener, KeyList
         if (e.getKeyCode() == KeyEvent.VK_LEFT  && sistema.ship.x - sistema.ship.getShipVelocityX() >= 0) {
             movingLeft = true;
             if (!moveTimer.isRunning()) {
-                moveTimer.start();
+                moveTimer.start();  
             }
         }
         else if (e.getKeyCode() == KeyEvent.VK_RIGHT  && sistema.ship.x + sistema.ship.getShipVelocityX() 
