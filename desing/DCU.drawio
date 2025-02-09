@@ -1,9 +1,12 @@
 <mxfile host="65bd71144e">
     <diagram id="yYk3k28R5wWqDYrRATjX" name="Page-1">
-        <mxGraphModel dx="832" dy="563" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+        <mxGraphModel dx="1120" dy="535" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
+                <mxCell id="25" value="Starship Game" style="shape=umlFrame;whiteSpace=wrap;html=1;width=120;height=30;boundedLbl=1;verticalAlign=middle;align=left;spacingLeft=5;fillColor=#76608a;strokeColor=#432D57;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="10" width="500" height="800" as="geometry"/>
+                </mxCell>
                 <mxCell id="2" style="edgeStyle=none;rounded=0;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#000000;fontColor=#FFFFFF;endArrow=none;endFill=0;" parent="1" source="3" target="16" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
@@ -85,7 +88,7 @@
                 <mxCell id="18" value="Perder si la nave se los aliens llegan a topar la nave o al llegar al suelo&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#23445d;fillColor=#bac8d3;" parent="1" vertex="1">
                     <mxGeometry x="368" y="554" width="182" height="92" as="geometry"/>
                 </mxCell>
-                <mxCell id="19" value="Si sigue sobreviviendo mediante pasa el tiempo&lt;div&gt;en el juego&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#23445d;fillColor=#bac8d3;" parent="1" vertex="1">
+                <mxCell id="19" value="Sobrevive mientras mate a los aliens y no deciendan en la totalidad" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#23445d;fillColor=#bac8d3;" parent="1" vertex="1">
                     <mxGeometry x="181" y="554" width="149" height="74" as="geometry"/>
                 </mxCell>
                 <mxCell id="20" value="Disparar mediante los controles asignados las municiones de la nave" style="ellipse;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" parent="1" vertex="1">
@@ -107,33 +110,30 @@
                 <mxCell id="24" value="Validar los datos ingresados" style="ellipse;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" parent="1" vertex="1">
                     <mxGeometry x="277" y="315" width="140" height="70" as="geometry"/>
                 </mxCell>
-                <mxCell id="25" value="Starship Game" style="shape=umlFrame;whiteSpace=wrap;html=1;width=120;height=30;boundedLbl=1;verticalAlign=middle;align=left;spacingLeft=5;fillColor=#76608a;strokeColor=#432D57;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="120" y="10" width="500" height="800" as="geometry"/>
-                </mxCell>
-                <mxCell id="44" style="edgeStyle=none;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="28">
+                <mxCell id="44" style="edgeStyle=none;html=1;endArrow=block;endFill=1;" parent="1" source="28" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="670" y="630" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="28" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Alien&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;strokeColor=#432D57;fontColor=#ffffff;fillColor=#76608a;" vertex="1" parent="1">
+                <mxCell id="28" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Alien&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;strokeColor=#432D57;fontColor=#ffffff;fillColor=#76608a;" parent="1" vertex="1">
                     <mxGeometry x="760" y="710" width="30" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="45" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="29" target="12">
+                <mxCell id="45" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="29" target="12" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" value="&lt;font style=&quot;color: light-dark(rgb(237, 237, 237), rgb(255, 255, 255));&quot;&gt;Block&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;strokeColor=#2D7600;fontColor=#ffffff;fillColor=#60a917;" vertex="1" parent="1">
+                <mxCell id="29" value="&lt;font style=&quot;color: light-dark(rgb(237, 237, 237), rgb(255, 255, 255));&quot;&gt;Block&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;strokeColor=#2D7600;fontColor=#ffffff;fillColor=#60a917;" parent="1" vertex="1">
                     <mxGeometry x="636" y="600" width="30" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="30" value="&lt;font style=&quot;color: light-dark(rgb(237, 237, 237), rgb(255, 255, 255));&quot;&gt;Nave&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;strokeColor=#A50040;fontColor=#ffffff;fillColor=#d80073;" vertex="1" parent="1">
+                <mxCell id="30" value="&lt;font style=&quot;color: light-dark(rgb(237, 237, 237), rgb(255, 255, 255));&quot;&gt;Nave&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;strokeColor=#A50040;fontColor=#ffffff;fillColor=#d80073;" parent="1" vertex="1">
                     <mxGeometry x="760" y="440" width="30" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="43" style="edgeStyle=none;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="31" target="29">
+                <mxCell id="43" style="edgeStyle=none;html=1;endArrow=block;endFill=1;" parent="1" source="31" target="29" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="31" value="&lt;font style=&quot;color: light-dark(rgb(237, 237, 237), rgb(255, 255, 255));&quot;&gt;Bala&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#6d8764;strokeColor=#3A5431;fontColor=#ffffff;" vertex="1" parent="1">
+                <mxCell id="31" value="&lt;font style=&quot;color: light-dark(rgb(237, 237, 237), rgb(255, 255, 255));&quot;&gt;Bala&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#6d8764;strokeColor=#3A5431;fontColor=#ffffff;" parent="1" vertex="1">
                     <mxGeometry x="760" y="570" width="30" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="42" style="edgeStyle=none;html=1;entryX=1;entryY=0.3333333333333333;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=1;" edge="1" parent="1" source="30" target="29">
+                <mxCell id="42" style="edgeStyle=none;html=1;entryX=1;entryY=0.3333333333333333;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=1;" parent="1" source="30" target="29" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
             </root>

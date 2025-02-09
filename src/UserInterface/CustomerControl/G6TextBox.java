@@ -18,12 +18,11 @@ public class G6TextBox extends JTextField{
     
     private void customizeComponent() {
         setBorderRect();
-        setFont(AppStyle.FONT);  
+        setFont(AppStyle.FONT_BOLD);  
         setForeground(AppStyle.COLOR_FONT_LIGHT);  
         setCaretColor(AppStyle.COLOR_CURSOR);
         setMargin(new Insets(5, 5, 5, 5));
         setOpaque(false);
-        //setUI(new BasicTextFieldUI());  // Para deshabilitar el subrayado por defecto
     }
     
     public void setBorderRect() {

@@ -32,10 +32,10 @@ public class StarShipGamePanel extends JPanel implements ActionListener, KeyList
         btnSalir.addActionListener(e-> System.exit(0));
 
         moveTimer = new Timer(70, e -> {
-            if (movingLeft && sistema.ship.x - sistema.shipVelocityX >= 0) {
-                sistema.ship.x -= sistema.shipVelocityX;
-            } else if (movingRight && sistema.ship.x + sistema.shipVelocityX + sistema.ship.width <= sistema.getBoardWidth()) {
-                sistema.ship.x += sistema.shipVelocityX;
+            if (movingLeft && sistema.ship.x - sistema.ship.getShipVelocityX() >= 0) {
+                sistema.ship.x -= sistema.ship.getShipVelocityX();
+            } else if (movingRight && sistema.ship.x + sistema.ship.getShipVelocityX() + sistema.ship.width <= sistema.getBoardWidth()) {
+                sistema.ship.x += sistema.ship.getShipVelocityX();
             }
         });
     }
@@ -99,24 +99,24 @@ public class StarShipGamePanel extends JPanel implements ActionListener, KeyList
     public void draw(Graphics g) {
         g.drawImage(sistema.ship.img, sistema.ship.x, sistema.ship.y, sistema.ship.width, sistema.ship.height, null);
         
-        for (int i = 0; i < sistema.alienArray.size(); i++) {
-            Alien alien = sistema.alienArray.get(i);
-            if (alien.alive) {
+        for (int i = 0; i < sistema.getAlienArray().size(); i++) {
+            Alien alien = sistema.getAlienArray().get(i);
+            if (alien.isAlive()) {
                 g.drawImage(alien.img, alien.x, alien.y, alien.width, alien.height, null);
             }
         }
         
         g.setColor(Color.white);
-        for (int i = 0; i < sistema.bulletArray.size(); i++) {
-            Bala bullet = sistema.bulletArray.get(i);
-            if (!bullet.used) {
-                g.drawRect(bullet.x, bullet.y, sistema.balaWidth, sistema.balaHeight);
+        for (int i = 0; i < sistema.getBulletArray().size(); i++) {
+            Bala bullet = sistema.getBulletArray().get(i);
+            if (!bullet.isUsed()) {
+                g.drawRect(bullet.x, bullet.y, sistema.bala.getBalaWidth(), sistema.bala.getBalaHeight());
             }
         }
         
         g.setColor(Color.white);
         g.setFont(AppStyle.FONT_GAME_OVER);
-        g.drawString("SCORE:" + String.valueOf((int) sistema.jugador.score), sistema.getBoardWidth() + 20, 50);
+        g.drawString("SCORE:" + String.valueOf((int) sistema.jugador.getScore()), sistema.getBoardWidth() + 20, 50);
         try {
             Font smallerFont = AppStyle.FONT_GAME_OVER.deriveFont(15f); // Cambia el tamaño de la fuente aquí
             g.setFont(smallerFont);
@@ -132,12 +132,12 @@ public class StarShipGamePanel extends JPanel implements ActionListener, KeyList
     public void actionPerformed(ActionEvent e) {
         sistema.move();
         repaint();
-        if (sistema.jugador.gameOver) {
+        if (sistema.jugador.isGameOver()) {
             gameOverLabel.setVisible(true);
             gameLoop.stop();
             ScoreBL scoreBL = new ScoreBL();
             try {
-                scoreBL.create(new ScoreDTO(this.idJugador, sistema.jugador.score));
+                scoreBL.create(new ScoreDTO(this.idJugador, sistema.jugador.getScore()));
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -146,22 +146,22 @@ public class StarShipGamePanel extends JPanel implements ActionListener, KeyList
     
     @Override
     public void keyReleased(KeyEvent e) {
-        if (sistema.jugador.gameOver) { //any key to restart
-            sistema.ship.x = sistema.shipX;
-            sistema.bulletArray.clear();
-            sistema.alienArray.clear();
-            sistema.jugador.gameOver = false;
-            sistema.jugador.score = 0;
-            sistema.alienColumns = 3;
-            sistema.alienRows = 2;
-            sistema.alienVelocityX = 1;
+        if (sistema.jugador.isGameOver()) { //any key to restart
+            sistema.ship.x = sistema.ship.getShipX();
+            sistema.getBulletArray().clear();
+            sistema.getAlienArray().clear();
+            sistema.jugador.setGameOver(false);
+            sistema.jugador.setScore(0);
+            sistema.setAlienColumns(3);
+            sistema.setAlienRows(2);
+            sistema.alien.setAlienVelocityX(1);
             sistema.createAliens();
             gameOverLabel.setVisible(false);
             gameLoop.start();
         }else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             Bala bullet = new Bala(sistema.ship.x + sistema.ship.width * 15 / 32, sistema.ship.y,
-                                 sistema.balaWidth, sistema.balaHeight);
-            sistema.bulletArray.add(bullet);
+                                 sistema.bala.getBalaWidth(), sistema.bala.getBalaHeight(),sistema.getTileSize());
+            sistema.getBulletArray().add(bullet);
         }else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             movingLeft = false;
             if (!movingRight) {
@@ -178,13 +178,13 @@ public class StarShipGamePanel extends JPanel implements ActionListener, KeyList
     
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_LEFT  && sistema.ship.x - sistema.shipVelocityX >= 0) {
+        if (e.getKeyCode() == KeyEvent.VK_LEFT  && sistema.ship.x - sistema.ship.getShipVelocityX() >= 0) {
             movingLeft = true;
             if (!moveTimer.isRunning()) {
                 moveTimer.start();
             }
         }
-        else if (e.getKeyCode() == KeyEvent.VK_RIGHT  && sistema.ship.x + sistema.shipVelocityX 
+        else if (e.getKeyCode() == KeyEvent.VK_RIGHT  && sistema.ship.x + sistema.ship.getShipVelocityX() 
                 + sistema.ship.width <= sistema.getBoardWidth()) {
             movingRight = true;
             if (!moveTimer.isRunning()) {
