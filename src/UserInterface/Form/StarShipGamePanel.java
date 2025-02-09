@@ -62,7 +62,7 @@ public class StarShipGamePanel extends JPanel implements ActionListener, KeyList
         gameOverLabel.setHorizontalAlignment(SwingConstants.CENTER);
         gameOverLabel.setVerticalAlignment(SwingConstants.CENTER);
         gameOverLabel.setVisible(false);
-        add(gameOverLabel, BorderLayout.CENTER);
+        add(gameOverLabel, BorderLayout.WEST);
     
         // Panel principal para la zona derecha
         JPanel rightPanel = new JPanel();
@@ -199,7 +199,7 @@ public class StarShipGamePanel extends JPanel implements ActionListener, KeyList
     }
 
     private G6Label 
-            gameOverLabel = new G6Label("Game Over", 79, AppStyle.FONT_GAME_OVER);
+            gameOverLabel = new G6Label(" Game Over ", 55, AppStyle.FONT_GAME_OVER);
     private G6Button 
             btnMenu     = new G6Button("Menu"),
             btnRanking  = new G6Button("Ranking"),
