@@ -1,7 +1,7 @@
 package Framework;
 
 import java.io.FileWriter;
-import java.io.ObjectInputFilter.Config;
+import java.nio.file.Paths;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -19,7 +19,7 @@ public class GameException extends Exception {
     }
 
     private void logErrorToFile(String message, String clase, String metodo) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(Config.LOGFILE, true))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(Paths.get("logfile.txt").toString(), true))) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             LocalDateTime now = LocalDateTime.now();
             
