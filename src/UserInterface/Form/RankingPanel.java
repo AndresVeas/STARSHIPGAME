@@ -22,13 +22,13 @@ public class RankingPanel extends JPanel{
     
     public RankingPanel(MainForm mainForm)  {
         customizeComponent();
-        try { showTable(); } catch (Exception e) {e.printStackTrace();}
+        try { showTable(); } catch (Exception e) {AppStyle.showMsgError(e.getMessage());}
         btnVolver.addActionListener( e-> mainForm.setPanel(mainForm.menuPanel));
     }
 
     public RankingPanel(MainForm main, StarShipGamePanel pantalla)  {
         customizeComponent();
-        try { showTable(); } catch (Exception e) {e.printStackTrace();}
+        try { showTable(); } catch (Exception e) {AppStyle.showMsgError(e.getMessage());}
         btnVolver.addActionListener(e -> {
             main.setPanel(pantalla);
             pantalla.gameLoop.start();
@@ -136,8 +136,8 @@ public class RankingPanel extends JPanel{
     private G6Button
             btnVolver = new G6Button("Volver", 40);
     private JPanel 
-            pnlTabla    = new JPanel(),
-            pnlBtns = new JPanel(new FlowLayout());
+            pnlTabla  = new JPanel(),
+            pnlBtns   = new JPanel(new FlowLayout());
     private Image 
             backgroundImage;
 }

@@ -1,5 +1,6 @@
 package UserInterface.Form;
 
+import UserInterface.AppStyle;
 import UserInterface.CustomerControl.G6Button;
 import UserInterface.CustomerControl.G6Label;
 import UserInterface.CustomerControl.G6TextBox;
@@ -115,7 +116,7 @@ public class LoginPanel extends JPanel {
             loginBL.create(new LoginDTO(id));
             mainForm.setPanel(new StarShipGamePanel(id,mainForm));
         } catch (Exception e) {
-            e.printStackTrace();
+            AppStyle.showMsgError(e.getMessage());
         }
     }
 

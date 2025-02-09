@@ -1,6 +1,7 @@
 package DataAcces.DAO;
 
 import DataAcces.DTO.LoginDTO;
+import Framework.GameException;
 import DataAcces.IDAO;
 import DataAcces.SQLiteDataHelper;
 import java.sql.Connection;
@@ -38,7 +39,7 @@ public class LoginDAO extends SQLiteDataHelper implements IDAO <LoginDTO> {
 
         } 
         catch (SQLException e) {
-            throw e;
+            throw new GameException(e.getMessage(), getClass().getName(),"readBy()");
         }
         return dto;
     }
@@ -68,7 +69,7 @@ public class LoginDAO extends SQLiteDataHelper implements IDAO <LoginDTO> {
             }
         } 
         catch (SQLException e) {
-            throw e;
+            throw new GameException(e.getMessage(), getClass().getName(),"readAll()");
         }
         return lst;
     }
@@ -84,7 +85,7 @@ public class LoginDAO extends SQLiteDataHelper implements IDAO <LoginDTO> {
             return true;
         } 
         catch (SQLException e) {
-            throw e;  
+            throw new GameException(e.getMessage(), getClass().getName(),"create()");  
         }
     }
 
@@ -104,7 +105,7 @@ public class LoginDAO extends SQLiteDataHelper implements IDAO <LoginDTO> {
             return true;
         } 
         catch (SQLException e) {
-            throw e; 
+            throw new GameException(e.getMessage(), getClass().getName(),"update"); 
         }
     }
 
@@ -127,7 +128,7 @@ public class LoginDAO extends SQLiteDataHelper implements IDAO <LoginDTO> {
                 return null; // or throw an exception if preferred
             }
         } catch (SQLException e) {
-            throw e;
+            throw new GameException(e.getMessage(), getClass().getName(),"getId()");
         }
     }
 
@@ -143,7 +144,7 @@ public class LoginDAO extends SQLiteDataHelper implements IDAO <LoginDTO> {
                 return rs.getInt(1) > 0;
             }
         } catch (SQLException e) {
-            throw e;
+            throw new GameException(e.getMessage(), getClass().getName(),"userExists()");
         }
         return false;
     }
@@ -159,7 +160,7 @@ public class LoginDAO extends SQLiteDataHelper implements IDAO <LoginDTO> {
                 return clave.equals(rs.getString("Clave"));
             }
         } catch (SQLException e) {
-            throw e;
+            throw new GameException(e.getMessage(), getClass().getName(),"verifyPassword()");
         }
         return false;
     }

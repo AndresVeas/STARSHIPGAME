@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import BusinessLogic.JugadorBL;
 import BusinessLogic.LoginBL;
 import DataAcces.DTO.JugadorDTO;
+import UserInterface.AppStyle;
 import UserInterface.CustomerControl.G6Button;
 import UserInterface.CustomerControl.G6Label;
 import UserInterface.CustomerControl.G6TextBox;
@@ -110,7 +111,7 @@ public class RegisterPanel extends JPanel{
             jugadorBL.create(new JugadorDTO(usuario,clave));
             mainForm.setPanel(new LoginPanel(mainForm));
         } catch (Exception e) {
-            e.printStackTrace();
+            AppStyle.showMsgError(e.getMessage());
         }
     }
     private G6Button

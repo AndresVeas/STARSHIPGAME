@@ -123,7 +123,7 @@ public class StarShipGamePanel extends JPanel implements ActionListener, KeyList
             g.drawString("RECORD PERSONAL: " + "\n" +String.valueOf(scoreBL.getRecord(idJugador)), sistema.getBoardWidth() 
             + 20, 100);
         } catch (Exception e) {
-            e.printStackTrace();
+            AppStyle.showMsgError(e.getMessage());
         };
 
     }
@@ -139,7 +139,7 @@ public class StarShipGamePanel extends JPanel implements ActionListener, KeyList
             try {
                 scoreBL.create(new ScoreDTO(this.idJugador, sistema.jugador.getScore()));
             } catch (Exception e1) {
-                e1.printStackTrace();
+                AppStyle.showMsgError(e1.getMessage());
             }
         }
     }

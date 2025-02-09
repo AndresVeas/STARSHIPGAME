@@ -72,13 +72,13 @@ public class AppStyle {
     }
 
     public static final void showMsg(String msg){
-        JOptionPane.showMessageDialog(null, msg, "😏 STARSHIP", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, msg, "😏 STARSHIPGAME", JOptionPane.INFORMATION_MESSAGE);
     }
     public static final void showMsgError(String msg){
-        JOptionPane.showMessageDialog(null, msg, "💀 STARSHIP", JOptionPane.OK_OPTION);
+        JOptionPane.showMessageDialog(null, msg, "💀 STARSHIPGAME", JOptionPane.OK_OPTION);
     }
 
     public static final boolean showConfirmYesNo(String msg){
-        return (JOptionPane.showConfirmDialog(null, msg, "😞 STARSHIP", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
+        return (JOptionPane.showConfirmDialog(null, msg, "😞 STARSHIPGAME", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
     }
 }

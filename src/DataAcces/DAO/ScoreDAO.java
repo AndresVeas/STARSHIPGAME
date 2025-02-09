@@ -1,6 +1,7 @@
 package DataAcces.DAO;
 
 import DataAcces.DTO.ScoreDTO;
+import Framework.GameException;
 import DataAcces.IDAO;
 import DataAcces.SQLiteDataHelper;
 import java.sql.Connection;
@@ -39,7 +40,7 @@ public class ScoreDAO extends SQLiteDataHelper implements IDAO <ScoreDTO> {
             }
         } 
         catch (SQLException e) {
-            throw e;
+            throw new GameException(e.getMessage(), getClass().getName(),"readBy()");
         }
         return dto;
     }
@@ -71,7 +72,7 @@ public class ScoreDAO extends SQLiteDataHelper implements IDAO <ScoreDTO> {
             }
         } 
         catch (SQLException e) {
-            throw e;
+            throw new GameException(e.getMessage(), getClass().getName(),"readAll()");
         }
         return lst;
     }
@@ -88,7 +89,7 @@ public class ScoreDAO extends SQLiteDataHelper implements IDAO <ScoreDTO> {
             return true;
         } 
         catch (SQLException e) {
-            throw e;  
+            throw new GameException(e.getMessage(), getClass().getName(),"create()");  
         }
     }
 
@@ -109,7 +110,7 @@ public class ScoreDAO extends SQLiteDataHelper implements IDAO <ScoreDTO> {
             return true;
         } 
         catch (SQLException e) {
-            throw e; 
+            throw new GameException(e.getMessage(), getClass().getName(),"update()"); 
         }
     }
 
@@ -130,7 +131,7 @@ public class ScoreDAO extends SQLiteDataHelper implements IDAO <ScoreDTO> {
                 maxScore = rs.getInt("PuntajeRecord");
             }
         } catch (SQLException e) {
-            throw e;
+            throw new GameException(e.getMessage(), getClass().getName(),"getRecord()");
         }
         return maxScore;
     }

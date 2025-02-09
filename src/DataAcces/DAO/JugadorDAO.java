@@ -1,6 +1,7 @@
 package DataAcces.DAO;
 
 import DataAcces.DTO.JugadorDTO;
+import Framework.GameException;
 import DataAcces.IDAO;
 import DataAcces.SQLiteDataHelper;
 import java.sql.Connection;
@@ -39,7 +40,7 @@ public class JugadorDAO extends SQLiteDataHelper implements IDAO <JugadorDTO> {
             }
         } 
         catch (SQLException e) {
-            throw e;
+            throw new GameException(e.getMessage(), getClass().getName(),"readBy()");
         }
         return dto;
     }
@@ -70,7 +71,7 @@ public class JugadorDAO extends SQLiteDataHelper implements IDAO <JugadorDTO> {
             }
         } 
         catch (SQLException e) {
-            throw e;
+            throw new GameException(e.getMessage(), getClass().getName(),"readAll()");
         }
         return lst;
     }
@@ -87,7 +88,7 @@ public class JugadorDAO extends SQLiteDataHelper implements IDAO <JugadorDTO> {
             return true;
         } 
         catch (SQLException e) {
-            throw e;  
+            throw new GameException(e.getMessage(), getClass().getName(),"create()"); 
         }
     }
 
@@ -108,7 +109,7 @@ public class JugadorDAO extends SQLiteDataHelper implements IDAO <JugadorDTO> {
             return true;
         } 
         catch (SQLException e) {
-            throw e; 
+            throw new GameException(e.getMessage(), getClass().getName(),"update()"); 
         }
     }
 
@@ -130,7 +131,7 @@ public class JugadorDAO extends SQLiteDataHelper implements IDAO <JugadorDTO> {
                 return null; // or throw an exception if preferred
             }
         } catch (SQLException e) {
-            throw e;
+            throw new GameException(e.getMessage(), getClass().getName(),"getId()");
         }
     }
 
@@ -159,7 +160,7 @@ public class JugadorDAO extends SQLiteDataHelper implements IDAO <JugadorDTO> {
             }
         } 
         catch (SQLException e) {
-            throw e;
+            throw new GameException(e.getMessage(), getClass().getName(),"getRanking()");
         }
         return lst;
     }
