@@ -8,10 +8,10 @@ public class Bala extends Block {
 
     
     public Bala(int x, int y, int width, int height,int tileSize) {
+        super(x, y, width, height, null);
         balaWidth   = tileSize / 8;
         balaHeight = tileSize / 2;
         bulletVelocityY = -13;
-        super(x, y, width, height, null);
     }
 
     public boolean isUsed() {

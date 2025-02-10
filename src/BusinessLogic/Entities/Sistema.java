@@ -26,6 +26,7 @@ public class Sistema {
     private int alienRows = 1;
     private int alienColumns = 1;
     private int alienCount = 0;
+    private int alienVelocidad = 1;
     
     public Jugador jugador = new Jugador();
     public Nave ship;
@@ -36,7 +37,7 @@ public class Sistema {
     public Sistema() {
         jugador = new Jugador();
         ship = new Nave(tileSize * columns / 2 - tileSize, tileSize * rows - tileSize * 2,
-                         tileSize * 2, tileSize, null,tileSize,columns,rows);
+        tileSize * 2, tileSize, null,tileSize,columns,rows);
         alien = new Alien(tileSize, tileSize, tileSize * 2, tileSize, null,tileSize);
         bala = new Bala(0, 0, tileSize / 8, tileSize / 2,tileSize);                        
         customizeComponent();
@@ -70,9 +71,15 @@ public class Sistema {
                 
                 if (alien.x + alien.width >= boardWidth || alien.x <= 0) {
                     alien.setAlienVelocityX(alien.getAlienVelocityX() *-1);
-                    if (alien.getAlienVelocityX() < 3 || alien.getAlienVelocityX() > -3) {
-                        if (alien.getAlienVelocityX() < 0) alien.setAlienVelocityX(alien.getAlienVelocityX()-1);
-                        else alien.setAlienVelocityX(alien.getAlienVelocityX()+1);  // Aumentar la velocidad de los alienígenas
+                    if (alien.getAlienVelocityX() < 4 || alien.getAlienVelocityX() > -4) {
+                        if (alien.getAlienVelocityX() < 0) {
+                            alienVelocidad = alien.getAlienVelocityX()-1;
+                            alien.setAlienVelocityX(alienVelocidad);
+                        }
+                        else {
+                            alienVelocidad = alien.getAlienVelocityX()+1;
+                            alien.setAlienVelocityX(alienVelocidad);
+                        }  // Aumentar la velocidad de los alienígenas
                     }
                     alien.x += alien.getAlienVelocityX(); // Mover un paso extra después del cambio de dirección
                     for (Alien otherAlien : alienArray) {
@@ -82,6 +89,7 @@ public class Sistema {
                 
                 if (alien.y >= ship.y) {
                     jugador.setGameOver (true);
+                    alienVelocidad = 1;
                 }
             }
         }
@@ -131,6 +139,8 @@ public class Sistema {
                     alienImgArray.get(randomImgIndex),
                     tileSize
                     );
+                    alien.setAlienVelocityX(alienVelocidad);
+
                     alienArray.add(alien);
                 }
             }

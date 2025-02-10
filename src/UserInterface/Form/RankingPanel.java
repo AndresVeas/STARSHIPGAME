@@ -50,7 +50,12 @@ public class RankingPanel extends JPanel{
             index++;
         }
         
-        JTable table = new JTable(data, header);
+        JTable table = new JTable(data, header) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Todas las celdas no son editables
+            }
+        };
         table.setShowHorizontalLines(true);
         table.setGridColor(Color.LIGHT_GRAY);
         table.setRowSelectionAllowed(true);

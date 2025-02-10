@@ -11,13 +11,13 @@ public class Alien extends Block{
     private int     alienHeight;
 
     public Alien(int x, int y, int width, int height, Image img,int tileSize) {
+        super(x, y, width, height, img);
         alive = true;
         alienVelocityX = 1;
         alienX = tileSize;
         alienY = tileSize;
         alienWidth = tileSize * 2;
         alienHeight = tileSize;
-        super(x, y, width, height, img);
     }
 
     public boolean isAlive() {

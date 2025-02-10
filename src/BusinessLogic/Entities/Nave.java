@@ -11,12 +11,12 @@ public class Nave extends Block {
     private int shipVelocityX;
     
     public Nave(int x, int y, int width, int height, Image img,int tileSize, int columns, int rows) {
+        super(x, y, width, height, img);
         shipWidth = tileSize*2;
         shipHeight = tileSize;
         shipX = tileSize * columns/2 - tileSize;
         shipY = tileSize * rows - tileSize*2;
         shipVelocityX = tileSize;
-        super(x, y, width, height, img);
     }
 
     public int getShipWidth() {
